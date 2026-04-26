@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayDaily - Mock Design</title>
+    <link rel="icon" type="image/png" href="PayDailyLogo.png">
+    <link href="node_modules/@fontsource/plus-jakarta-sans/index.css" rel="stylesheet">
+    <link href="node_modules/@fontsource/plus-jakarta-sans/500.css" rel="stylesheet">
+    <link href="node_modules/@fontsource/plus-jakarta-sans/600.css" rel="stylesheet">
+    <link href="node_modules/@fontsource/plus-jakarta-sans/700.css" rel="stylesheet">
+    <link href="node_modules/@fontsource/plus-jakarta-sans/800.css" rel="stylesheet">
+    <link href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===================== VIEW 0: HOME / LANDING ===================== -->
+    <div id="home-view" style="display:flex;">
+        <nav class="home-nav">
+            <div class="home-brand">
+                <img src="PayDailyLogo.png" alt="Logo" onerror="this.style.display='none'">
+                <span>PayDaily</span>
+            </div>
+            <div class="home-nav-links">
+                <a href="#features-section">Features</a>
+                <a href="#about-section">About</a>
+                <button class="btn-nav-login" onclick="showView('login')">Sign In</button>
+            </div>
+        </nav>
+
+        <section class="hero-section">
+            <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Web-Based POS & Financial MIS</div>
+            <h1 class="hero-title">Smart Sales.<br><span class="hero-accent">Real-Time</span> Insights.</h1>
+            <p class="hero-sub">PayDaily gives PayTeodil Store a complete digital system — track every sale, monitor
+                stock, and see financial performance every single day.</p>
+            <div class="hero-cta-row">
+                <button class="btn-hero-primary" onclick="showView('login')"><i
+                        class="fa-solid fa-arrow-right-to-bracket"></i> Access System</button>
+                <button class="btn-hero-outline" onclick="scrollToSection('features-section')"><i
+                        class="fa-solid fa-play"></i> See Features</button>
+            </div>
+            <div class="hero-stats-row">
+                <div class="hero-stat"><span class="stat-num">100%</span><span class="stat-label">Sales
+                        Visibility</span></div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat"><span class="stat-num">Real-Time</span><span class="stat-label">Inventory
+                        Tracking</span></div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat"><span class="stat-num">2 Roles</span><span class="stat-label">Manager &
+                        Staff</span></div>
+            </div>
+        </section>
+
+        <section class="features-section" id="features-section">
+            <div class="section-label">What PayDaily Does</div>
+            <h2 class="section-title">Everything the Store Needs</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon teal"><i class="fa-solid fa-cash-register"></i></div>
+                    <h3>Point-of-Sale</h3>
+                    <p>Staff can process transactions fast — select products, calculate totals, and print receipts in
+                        under 30 seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon blue"><i class="fa-solid fa-boxes-stacked"></i></div>
+                    <h3>Inventory Tracking</h3>
+                    <p>Stock levels update automatically after every sale. Get alerts before items run out — not after.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon purple"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Sales Reports</h3>
+                    <p>Daily and monthly reports generated automatically. See best sellers, revenue trends, and product
+                        performance at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon orange"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Role-Based Access</h3>
+                    <p>Managers get full access. Staff only see what they need. Sensitive data stays protected.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about-section">
+            <div class="about-logo-block">
+                <img src="PayDailyLogo.png" alt="PayTeodil Logo" class="about-logo"
+                    onerror="this.style.display='none'">
+                <div class="about-logo-text">
+                    <h2>PayDaily</h2>
+                    <p class="about-tagline">Pay + Daily</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>The Name</h3>
+                    <p><strong>Pay</strong> — represents the financial and payment side of the system.<br>
+                        <strong>Teo</strong> — from <em>PayTeodil Store</em>, the business this system was built
+                        for.<br>
+                        <strong>Daily</strong> — reflects the goal: real-time, everyday visibility into the business.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>The Logo</h3>
+                    <p>The logo features a pencil, ruler, and books — representing the school supplies that PayTeodil
+                        Store is known for. The bold "P" stands for both PayTeodil and the Philippine Peso (₱),
+                        symbolizing the financial core of the system.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="home-footer">
+            <p>© 2025 PayDaily — Fraginal • Navarro • Palmero | BSIT-3 | Web Systems & MIS</p>
+        </footer>
+    </div>
+
+
+    <!-- ===================== VIEW 1: LOGIN ===================== -->
+    <div id="login-view" style="display:none;">
+        <header class="login-header">
+            <div class="login-brand">
+                <img src="PayDailyLogo.png" alt="Logo" style="height:36px;border-radius:8px;"
+                    onerror="this.style.display='none'">
+                PayDaily
+            </div>
+            <button class="btn-nav-login"
+                style="background:transparent;border:1px solid var(--border-color);color:var(--text-muted);"
+                onclick="showView('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+        </header>
+
+        <main class="login-main">
+            <div class="login-card">
+                <div class="shield-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h1>Secure System Access</h1>
+                <p class="subtitle">Select your role and enter credentials to continue.</p>
+
+                <div id="errorMessage" class="alert alert-error" style="display:none;">
+                    <i class="fa-solid fa-circle-exclamation"></i> Invalid username or password.
+                </div>
+                <div id="successMessage" class="alert alert-success" style="display:none;">
+                    <i class="fa-solid fa-circle-check"></i> Login successful! Redirecting...
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Select Role</label>
+                        <div class="role-grid">
+                            <label>
+                                <input type="radio" name="role" value="manager" checked>
+                                <div class="role-box"><i class="fa-solid fa-store"></i> Manager</div>
+                            </label>
+                            <label>
+                                <input type="radio" name="role" value="staff">
+                                <div class="role-box"><i class="fa-solid fa-id-badge"></i> Staff</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="username" placeholder="Enter username" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container"><input type="checkbox"> Remember role</label>
+                        <a href="#" class="forgot-link"
+                            onclick="alert('Password reset link sent to registered email.')">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+                    </button>
+                </form>
+
+                <div class="system-status">
+                    <div class="status-divider">System Status</div>
+                    <div class="status-text">
+                        <div class="status-dot"></div> All systems operational
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="login-footer">© 2025 PayDaily Systems. Authorized personnel only.</footer>
+    </div>
+
+
+    <!-- ===================== VIEW 2: MANAGER DASHBOARD ===================== -->
+    <div id="admin-view" class="admin-wrapper" style="display:none;">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="PayTeodilStore.png" alt="Logo"
+                    style="height:40px;width:40px;object-fit:contain;border-radius:8px;margin-right:0.5rem;"
+                    onerror="this.style.display='none'">
+                <div class="brand-text">
+                    <h2>PayTeodil</h2><span>Store</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a class="nav-link active" id="nav-dashboard"
+                        onclick="switchAdminTab('dashboard')"><i class="fa-solid fa-border-all"></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav-inventory" onclick="switchAdminTab('inventory')"><i
+                            class="fa-solid fa-boxes-stacked"></i> Inventory</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav-transactions"
+                        onclick="switchAdminTab('transactions')"><i class="fa-solid fa-file-invoice-dollar"></i>
+                        Transactions</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav-reports" onclick="switchAdminTab('reports')"><i
+                            class="fa-solid fa-chart-pie"></i> Sales Reports</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav-clearance" onclick="switchAdminTab('clearance')"><i
+                            class="fa-solid fa-tags" style="color:#F43F5E;"></i> Clearance Sale</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav-users" onclick="switchAdminTab('users')"><i
+                            class="fa-solid fa-users-gear"></i> User Management</a></li>
+                <div class="nav-section-title">System</div>
+                <li class="nav-item"><a class="nav-link" onclick="showView('sitemap')"><i
+                            class="fa-solid fa-sitemap"></i> Site Map</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="openSettings()"><i class="fa-solid fa-gear"></i>
+                        Settings</a></li>
+                <li class="nav-item nav-logout-mobile"><a class="nav-link" onclick="handleLogout()"
+                        style="color:var(--danger-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log
+                        Out</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar"><i class="fa-solid fa-building"></i></div>
+                    <div class="user-info">
+                        <h4 id="admin-user-name">Store Manager</h4>
+                        <span id="admin-user-role">Manager</span>
+                    </div>
+                </div>
+                <button class="logout-btn" title="Log Out" onclick="handleLogout()"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i></button>
+            </div>
+        </aside>
+
+        <div class="content-area">
+
+            <!-- DASHBOARD -->
+            <main class="main-content" id="dashboard-content">
+                <header class="topbar">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                        <p>Welcome back — here's what's happening today.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <div class="search-bar" style="position:relative;">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="dashSearch" placeholder="Search..."
+                                onkeyup="handleDashSearch(this.value)" autocomplete="off">
+                            <div id="searchDropdown" class="search-dropdown" style="display:none;"></div>
+                        </div>
+                        <button class="icon-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-moon"></i></button>
+                        <div style="position:relative;">
+                            <button class="icon-btn" onclick="toggleNotifications()" id="notifBtn"><i
+                                    class="fa-regular fa-bell"></i><span class="notification-badge"></span></button>
+                            <div id="notifPanel" class="notif-panel" style="display:none;">
+                                <div class="notif-header"><strong>Notifications</strong><button
+                                        onclick="clearNotifications()"
+                                        style="background:none;border:none;color:var(--primary-blue);cursor:pointer;font-size:0.8rem;">Clear
+                                        all</button></div>
+                                <div id="dynamic-notifications">
+                                    <div class="notif-item unread"
+                                        onclick="switchAdminTab('inventory');document.getElementById('invStatusFilter').value='Low Stock';filterInventory();toggleNotifications();">
+                                        <i class="fa-solid fa-triangle-exclamation" style="color:#F59E0B;"></i>
+                                        <div><strong>Low Stock: Ruler 30cm</strong><br><span>Only 8 units left</span>
+                                        </div>
+                                    </div>
+                                    <div class="notif-item unread"
+                                        onclick="switchAdminTab('inventory');document.getElementById('invStatusFilter').value='Low Stock';filterInventory();toggleNotifications();">
+                                        <i class="fa-solid fa-triangle-exclamation" style="color:#F59E0B;"></i>
+                                        <div><strong>Low Stock: Sling Bag</strong><br><span>Only 5 units left</span>
+                                        </div>
+                                    </div>
+                                    <div class="notif-item unread"
+                                        onclick="switchAdminTab('inventory');document.getElementById('invStatusFilter').value='Out of Stock';filterInventory();toggleNotifications();">
+                                        <i class="fa-solid fa-circle-xmark" style="color:#EF4444;"></i>
+                                        <div><strong>Out of Stock: Lavender Perfume</strong><br><span>Restock
+                                                needed</span></div>
+                                    </div>
+                                </div>
+                                <div class="notif-item" onclick="switchAdminTab('transactions');toggleNotifications();">
+                                    <i class="fa-solid fa-receipt" style="color:#10B981;"></i>
+                                    <div><strong>New sale completed</strong><br><span>TXN-00058 — ₱150.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <section class="kpi-grid">
+                    <div class="kpi-card blue">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-peso-sign"></i></div><span
+                                class="kpi-badge badge-positive" style="display:none;">+0.0% <i
+                                    class="fa-solid fa-arrow-trend-up"></i></span>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Today's Sales</div>
+                            <div class="kpi-value">₱0.00</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card green">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-receipt"></i></div><span
+                                class="kpi-badge badge-positive" style="display:none;">+0.0% <i
+                                    class="fa-solid fa-arrow-trend-up"></i></span>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Total Transactions</div>
+                            <div class="kpi-value">0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card orange" style="cursor:pointer;"
+                        onclick="switchAdminTab('inventory'); document.getElementById('invStatusFilter').value='Low Stock'; filterInventory(); showToast('Showing low stock items')">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><span
+                                class="kpi-badge badge-danger">Click to View</span>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Low Stock Alerts</div>
+                            <div class="kpi-value">3 <span
+                                    style="font-size:1rem;color:var(--text-muted);font-weight:500;">Items</span></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sales Overview</h3>
+                            <select id="salesPeriodSelect"
+                                style="border:none;background:var(--muted-bg);color:var(--text-main);padding:0.5rem;border-radius:6px;outline:none;cursor:pointer;"
+                                onchange="changeSalesPeriod(this.value)">
+                                <option value="week">Last 7 Days</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+                        <div class="chart-container"><canvas id="salesChart"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Best Selling Products</h3>
+                            <a class="card-action" onclick="switchAdminTab('inventory')">View All</a>
+                        </div>
+                        <div class="product-list">
+                            <div class="product-item">
+                                <div class="product-icon"><i class="fa-solid fa-pen"></i></div>
+                                <div class="product-details">
+                                    <div class="product-name">Ballpen Set (12pcs)</div>
+                                    <div class="product-sales">34 sold today</div>
+                                </div>
+                                <div class="product-revenue">₱510.00</div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-icon"><i class="fa-solid fa-book"></i></div>
+                                <div class="product-details">
+                                    <div class="product-name">Notebook A4 (80 leaves)</div>
+                                    <div class="product-sales">28 sold today</div>
+                                </div>
+                                <div class="product-revenue">₱700.00</div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-icon"><i class="fa-solid fa-spray-can"></i></div>
+                                <div class="product-details">
+                                    <div class="product-name">Cologne Spray 100ml</div>
+                                    <div class="product-sales">12 sold today</div>
+                                </div>
+                                <div class="product-revenue">₱1,800.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="card">
+                    <div class="card-header" style="margin-bottom:0;">
+                        <h3 class="card-title">Recent Transactions</h3>
+                        <button class="btn-primary" onclick="switchAdminTab('transactions')">View All</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Cashier</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashRecentTxnBody">
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+
+            <!-- INVENTORY (INPUT PAGE) -->
+            <main class="main-content" id="inventory-content" style="display:none;">
+                <header class="topbar">
+                    <div class="page-title">
+                        <h1>Inventory Management</h1>
+                        <p>Add, edit, and monitor all products and stock levels.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <button class="btn-primary" onclick="openAddProductModal()"><i class="fa-solid fa-plus"></i> Add
+                            New Product</button>
+                    </div>
+                </header>
+                <div class="screen-desc-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <strong>INPUT PAGE</strong> — The manager adds, edits, and deletes products here. Each product has a
+                    name, category, price, and stock level. When a product is added, it becomes available in the POS
+                    screen for staff to sell.
+                </div>
+                <div class="inventory-filters">
+                    <div class="filter-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text"
+                            id="invSearch" placeholder="Search products..." onkeyup="filterInventory()"></div>
+                    <select class="filter-select" id="invCatFilter" onchange="filterInventory()">
+                        <option value="">All Categories</option>
+                        <option>School Supplies</option>
+                        <option>Bags</option>
+                        <option>Perfumes & Colognes</option>
+                        <option>Hardware</option>
+                    </select>
+                    <select class="filter-select" id="invStatusFilter" onchange="filterInventory()">
+                        <option value="">All Status</option>
+                        <option>In Stock</option>
+                        <option>Low Stock</option>
+                        <option>Out of Stock</option>
+                    </select>
+                </div>
+                <div class="inventory-kpi-grid">
+                    <div class="kpi-card blue">
+                        <div class="kpi-header">
+                            <div class="kpi-title" style="margin-bottom:0;">Total Products</div>
+                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
+                                    class="fa-solid fa-box"></i></div>
+                        </div>
+                        <div class="kpi-value" id="inv-total">18</div>
+                    </div>
+                    <div class="kpi-card orange">
+                        <div class="kpi-header">
+                            <div class="kpi-title" style="margin-bottom:0;">Low Stock</div>
+                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
+                                    class="fa-solid fa-triangle-exclamation"></i></div>
+                        </div>
+                        <div class="kpi-value text-orange">3</div>
+                    </div>
+                    <div class="kpi-card red">
+                        <div class="kpi-header">
+                            <div class="kpi-title" style="margin-bottom:0;">Out of Stock</div>
+                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
+                                    class="fa-solid fa-cart-arrow-down"></i></div>
+                        </div>
+                        <div class="kpi-value text-red">1</div>
+                    </div>
+                    <div class="kpi-card green">
+                        <div class="kpi-header">
+                            <div class="kpi-title" style="margin-bottom:0;">Total Value</div>
+                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
+                                    class="fa-solid fa-peso-sign"></i></div>
+                        </div>
+                        <div class="kpi-value text-green">₱28,450</div>
+                    </div>
+                </div>
+                <section class="card" style="padding:0;">
+                    <div style="padding:0 1.5rem;">
+                        <table id="inventoryTable">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th style="text-align:right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryBody">
+                                <tr data-cat="School Supplies" data-status="In Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-pen"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Ballpen Set (12pcs)</div>
+                                                <div class="product-sku">SKU: SS-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">School Supplies</td>
+                                    <td style="font-weight:600;">₱15.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar high" style="width:75%;"></div>
+                                            </div><span class="stock-text">60 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-instock">In Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="School Supplies" data-status="In Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-book"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Notebook A4 (80 leaves)
+                                                </div>
+                                                <div class="product-sku">SKU: SS-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">School Supplies</td>
+                                    <td style="font-weight:600;">₱25.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar high" style="width:85%;"></div>
+                                            </div><span class="stock-text">85 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-instock">In Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="School Supplies" data-status="Low Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-ruler"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Ruler 30cm</div>
+                                                <div class="product-sku">SKU: SS-003</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">School Supplies</td>
+                                    <td style="font-weight:600;">₱12.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar medium" style="width:25%;"></div>
+                                            </div><span class="stock-text">8 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-lowstock">Low Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="School Supplies" data-status="In Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-scissors"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Scissors (Medium)</div>
+                                                <div class="product-sku">SKU: SS-004</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">School Supplies</td>
+                                    <td style="font-weight:600;">₱35.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar high" style="width:65%;"></div>
+                                            </div><span class="stock-text">40 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-instock">In Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="Bags" data-status="In Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-bag-shopping"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">School Backpack (Blue)</div>
+                                                <div class="product-sku">SKU: BG-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Bags</td>
+                                    <td style="font-weight:600;">₱450.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar high" style="width:70%;"></div>
+                                            </div><span class="stock-text">21 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-instock">In Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="Bags" data-status="Low Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-briefcase"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Sling Bag (Black)</div>
+                                                <div class="product-sku">SKU: BG-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Bags</td>
+                                    <td style="font-weight:600;">₱320.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar medium" style="width:20%;"></div>
+                                            </div><span class="stock-text">5 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-lowstock">Low Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="Perfumes & Colognes" data-status="In Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-spray-can"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Cologne Spray 100ml</div>
+                                                <div class="product-sku">SKU: PF-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Perfumes & Colognes</td>
+                                    <td style="font-weight:600;">₱150.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar high" style="width:60%;"></div>
+                                            </div><span class="stock-text">30 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-instock">In Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="Perfumes & Colognes" data-status="Out of Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-bottle-droplet"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Lavender Perfume 50ml</div>
+                                                <div class="product-sku">SKU: PF-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Perfumes & Colognes</td>
+                                    <td style="font-weight:600;">₱280.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar low" style="width:0%;"></div>
+                                            </div><span class="stock-text">0 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-outstock">Out of Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="Hardware" data-status="In Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-screwdriver-wrench"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Flat Head Screwdriver</div>
+                                                <div class="product-sku">SKU: HW-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Hardware</td>
+                                    <td style="font-weight:600;">₱55.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar high" style="width:90%;"></div>
+                                            </div><span class="stock-text">45 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-instock">In Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-cat="Hardware" data-status="Low Stock">
+                                    <td>
+                                        <div class="product-item">
+                                            <div class="product-icon" style="width:40px;height:40px;font-size:1.2rem;">
+                                                <i class="fa-solid fa-plug"></i></div>
+                                            <div>
+                                                <div class="product-name" style="margin:0;">Extension Wire 3m</div>
+                                                <div class="product-sku">SKU: HW-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Hardware</td>
+                                    <td style="font-weight:600;">₱185.00</td>
+                                    <td>
+                                        <div class="stock-level-wrapper">
+                                            <div class="stock-progress">
+                                                <div class="stock-progress-bar medium" style="width:15%;"></div>
+                                            </div><span class="stock-text">4 units</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill status-lowstock">Low Stock</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon" onclick="openEditModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="this.closest('tr').remove();showToast('Product removed.')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <!-- TRANSACTIONS (PROCESS PAGE) -->
+            <main class="main-content" id="transactions-content" style="display:none;">
+                <header class="topbar">
+                    <div class="page-title">
+                        <h1>Transactions History</h1>
+                        <p>Complete record of all store sales.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <div class="search-bar"><i class="fa-solid fa-magnifying-glass"></i><input type="text"
+                                placeholder="Search by Order ID..."></div>
+                        <button class="btn-primary"
+                            style="background:var(--card-bg);color:var(--text-main);border:1px solid var(--border-color);"
+                            onclick="exportTransactionsCSV()"><i class="fa-solid fa-download"></i> Export</button>
+                    </div>
+                </header>
+                <div class="screen-desc-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <strong>PROCESS PAGE</strong> — This page shows all completed transactions. Each record is created
+                    automatically when a sale is processed through the POS. The manager can view, search, and export
+                    transaction history for financial review.
+                </div>
+                <section class="card" style="padding:0;">
+                    <div style="padding:0 1.5rem;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Cashier</th>
+                                    <th>Date & Time</th>
+                                    <th>Items</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <!-- SALES REPORTS (OUTPUT PAGE) -->
+            <main class="main-content" id="reports-content" style="display:none;">
+                <header class="topbar">
+                    <div class="page-title">
+                        <h1>Sales Reports & Analytics</h1>
+                        <p>Financial performance overview for PayTeodil Store.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <select id="reportsPeriodSelect"
+                            style="border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);padding:0.5rem 1rem;border-radius:8px;outline:none;cursor:pointer;"
+                            onchange="changeReportsPeriod(this.value)">
+                            <option value="today">Today (Daily)</option>
+                            <option value="week">This Week</option>
+                            <option value="month" selected>This Month</option>
+                            <option value="lastmonth">Last Month</option>
+                            <option value="threeMonths">Last 3 Months</option>
+                        </select>
+                        <button class="btn-primary" onclick="exportReportCSV()"><i class="fa-solid fa-file-csv"></i>
+                            Export Data (CSV)</button>
+                    </div>
+                </header>
+                <div class="screen-desc-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <strong>OUTPUT PAGE</strong> — This is the main reporting screen for the manager. It displays total
+                    revenue, transaction counts, best-selling products, and visual charts. Data is pulled from the
+                    Transactions and Inventory databases automatically.
+                </div>
+                <section class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
+                    <div class="kpi-card blue">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-peso-sign"></i></div><span
+                                class="kpi-badge badge-positive" style="display:none;">+0.0%</span>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Monthly Revenue</div>
+                            <div class="kpi-value">₱0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card green">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-receipt"></i></div><span
+                                class="kpi-badge badge-positive" style="display:none;">+0.0%</span>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Total Transactions</div>
+                            <div class="kpi-value">0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card purple">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Avg. Order Value</div>
+                            <div class="kpi-value">₱0.00</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card orange">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Top Category</div>
+                            <div class="kpi-value" style="font-size:1.2rem;">None</div>
+                        </div>
+                    </div>
+                </section>
+                <section class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Monthly Sales Trend</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="reportsChart"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sales by Category</h3>
+                        </div>
+                        <div class="chart-container" style="height:220px;"><canvas id="categoryChart"></canvas></div>
+                    </div>
+                </section>
+                <section class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Product Performance Report</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Units Sold</th>
+                                <th>Revenue</th>
+                                <th>Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsBody">
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+
+            <!-- CLEARANCE SALE (PROMOTIONAL FEATURE) -->
+            <main class="main-content" id="clearance-content" style="display:none;">
+                <header class="topbar">
+                    <div class="page-title">
+                        <h1>Clearance Sale Management</h1>
+                        <p>Identify slow-moving inventory and manage clearance discounts to drive sales.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <div style="display:flex; align-items:center; gap:0.5rem; margin-right: 1rem;">
+                            <label class="switch"><input type="checkbox" id="clearanceFeatureToggle" checked onchange="toggleClearanceFeature(this.checked)"><span class="slider"></span></label>
+                            <strong>Feature Active</strong>
+                        </div>
+                        <button class="btn-primary" onclick="forceClearanceScan()"><i class="fa-solid fa-rotate"></i> Run Scan</button>
+                    </div>
+                </header>
+                <div class="screen-desc-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <strong>PROMO PAGE</strong> — Automatically identifies items with 0-2 sales in the last 14 days OR 30+ days in inventory. Discounts can be applied to push inventory during high-traffic weeks. The "Clearance" category appears in the POS when active.
+                </div>
+                
+                <section class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+                    <div class="kpi-card orange">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Slow Moving Items</div>
+                            <div class="kpi-value" id="clearanceSlowCount">0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card green">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Active Clearance Items</div>
+                            <div class="kpi-value" id="clearanceActiveCount">0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card blue">
+                        <div class="kpi-header">
+                            <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-title">Weekly Sales Volume</div>
+                            <div class="kpi-value" id="clearanceVolumeStatus" style="font-size: 1.25rem;">Checking...</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="card" style="padding:0;">
+                    <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem;">
+                        <h3 class="card-title">Clearance Eligible Products</h3>
+                    </div>
+                    <div style="padding:0 1.5rem;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Status Trigger</th>
+                                    <th>Current Price</th>
+                                    <th>Clearance Discount</th>
+                                    <th>Final Price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clearanceBody">
+                                <!-- Automatically populated by js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <!-- USER MANAGEMENT (ADDITIONAL PAGE) -->
+            <main class="main-content" id="users-content" style="display:none;">
+                <header class="topbar">
+                    <div class="page-title">
+                        <h1>User Management</h1>
+                        <p>Manage staff accounts and access permissions.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <button class="btn-primary" onclick="openAddUserModal()"><i class="fa-solid fa-plus"></i> Add
+                            User</button>
+                    </div>
+                </header>
+                <div class="screen-desc-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <strong>ADDITIONAL PAGE</strong> — Only the manager can access this page. It shows all system users
+                    and their roles. The manager can add new staff accounts or remove existing ones. This enforces the
+                    role-based access control of PayDaily.
+                </div>
+                <section class="card" style="padding:0;">
+                    <div style="padding:0 1.5rem;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Last Login</th>
+                                    <th>Status</th>
+                                    <th style="text-align:right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersBody">
+                                <tr>
+                                    <td>
+                                        <div style="font-weight:600;">Store Owner</div>
+                                        <div style="font-size:0.75rem;color:var(--text-muted);">ID: USR-001</div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">manager</td>
+                                    <td><span class="status-pill"
+                                            style="background:#EDE9FE;color:#6D28D9;">Manager</span></td>
+                                    <td style="color:var(--text-muted);">Today, 8:00 AM</td>
+                                    <td><span class="status-pill status-instock">Active</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-eye action-icon" onclick="alert('View profile')"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="font-weight:600;">Jane Doe</div>
+                                        <div style="font-size:0.75rem;color:var(--text-muted);">ID: USR-002</div>
+                                    </td>
+                                    <td style="color:var(--text-muted);">staff</td>
+                                    <td><span class="status-pill" style="background:#D1FAE5;color:#065F46;">Staff</span>
+                                    </td>
+                                    <td style="color:var(--text-muted);">Today, 9:00 AM</td>
+                                    <td><span class="status-pill status-instock">Active</span></td>
+                                    <td>
+                                        <div class="table-actions" style="justify-content:flex-end;"><i
+                                                class="fa-solid fa-pen action-icon"
+                                                onclick="openEditUserModal(this)"></i><i
+                                                class="fa-solid fa-trash-can action-icon delete"
+                                                onclick="alert('Remove user account?')"></i></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+        </div>
+    </div>
+
+
+    <!-- ===================== VIEW 3: STAFF POS ===================== -->
+    <div id="pos-view" style="display:none;">
+        <header class="pos-header">
+            <div class="login-brand" style="font-size:1.1rem;">
+                <img src="PayTeodilStore.png" alt="Logo" style="height:28px;border-radius:6px;margin-right:0.5rem;"
+                    onerror="this.style.display='none'">
+                PAY TEODIL STORE — POS
+            </div>
+            <div class="pos-header-right">
+                <div class="pos-time"><i class="fa-regular fa-clock"></i> <span id="clock">--:--</span></div>
+                <div class="pos-user">
+                    <div class="pos-user-avatar">JD</div><span id="pos-user-name">Jane Doe</span>
+                </div>
+                <button class="icon-btn" style="border:none;background:transparent;color:var(--text-muted);"
+                    onclick="openSettings()"><i class="fa-solid fa-gear"></i></button>
+                <button class="icon-btn" style="border:none;background:transparent;color:var(--danger-red);"
+                    onclick="handleLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+            </div>
+        </header>
+        <div class="pos-desc-bar">
+            <i class="fa-solid fa-circle-info"></i>
+            <strong>PROCESS PAGE (Staff POS)</strong> — Staff use this screen to process customer purchases. They search
+            or browse products, add them to the cart, then complete the sale. The system automatically calculates the
+            total and generates a receipt.
+        </div>
+        <div class="pos-main-wrapper">
+            <div class="pos-products-area">
+                <div class="pos-search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="posSearchInput" placeholder="Search products by name..."
+                        onkeyup="searchProducts(this.value)">
+                </div>
+                <div class="pos-categories" id="posCategoryContainer">
+                    <div class="category-pill clearance-pill" style="display:none; background:#FFF1F2; color:#E11D48; border-color:#FDA4AF; font-weight:700;" onclick="filterProducts('Clearance',this)"><i class="fa-solid fa-tags"></i> Clearance</div>
+                    <div class="category-pill active" onclick="filterProducts('All Items',this)">All Items</div>
+                    <div class="category-pill" onclick="filterProducts('School Supplies',this)">School Supplies</div>
+                    <div class="category-pill" onclick="filterProducts('Bags',this)">Bags</div>
+                    <div class="category-pill" onclick="filterProducts('Perfumes & Colognes',this)">Perfumes</div>
+                    <div class="category-pill" onclick="filterProducts('Hardware',this)">Hardware</div>
+                </div>
+                <div class="pos-grid" id="productGrid"></div>
+            </div>
+            <div class="pos-cart-area">
+                <div class="cart-header">
+                    <h2>Current Order</h2>
+                    <button class="cart-clear-btn" onclick="clearCart()"><i
+                            class="fa-regular fa-trash-can"></i></button>
+                </div>
+                <div class="cart-items-container" id="cartContainer">
+                    <div class="empty-cart-msg"><i class="fa-solid fa-cart-shopping"></i><span>No items added yet</span>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₱0.00</span></div>
+                    <div class="summary-row"><span>Tax (12% VAT)</span><span id="cartTax">₱0.00</span></div>
+                    <div class="summary-row total"><span>Total</span><span id="cartTotal"
+                            style="color:var(--primary-blue);">₱0.00</span></div>
+
+                    <!-- CASH INPUT SECTION -->
+                    <div class="cash-input-section">
+                        <div class="cash-input-row">
+                            <label class="cash-label"><i class="fa-solid fa-money-bill-wave"></i> Cash Received</label>
+                            <div class="cash-input-wrapper">
+                                <span class="cash-peso">₱</span>
+                                <input type="number" id="cashInput" placeholder="0.00" min="0" step="0.01"
+                                    oninput="calculateChange()">
+                            </div>
+                        </div>
+                        <div class="quick-cash-row">
+                            <button class="quick-cash-btn" onclick="setQuickCash(20)">₱20</button>
+                            <button class="quick-cash-btn" onclick="setQuickCash(50)">₱50</button>
+                            <button class="quick-cash-btn" onclick="setQuickCash(100)">₱100</button>
+                            <button class="quick-cash-btn" onclick="setQuickCash(200)">₱200</button>
+                            <button class="quick-cash-btn" onclick="setQuickCash(500)">₱500</button>
+                            <button class="quick-cash-btn" onclick="setQuickCash(1000)">₱1000</button>
+                        </div>
+                        <div class="change-display" id="changeDisplay" style="display:none;">
+                            <span class="change-label">Change</span>
+                            <span class="change-amount" id="changeAmount">₱0.00</span>
+                        </div>
+                        <div class="insufficient-funds" id="insufficientFunds" style="display:none;">
+                            <i class="fa-solid fa-circle-exclamation"></i> Insufficient cash amount
+                        </div>
+                    </div>
+
+                    <div class="cart-actions">
+                        <button class="btn-checkout" onclick="completeSale()">Complete Sale <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== VIEW 4: SETTINGS ===================== -->
+    <div id="settings-view" style="display:none;">
+        <div class="settings-header">
+            <button class="btn-outline" style="flex:none;width:auto;" onclick="closeSettings()"><i
+                    class="fa-solid fa-arrow-left"></i> Go Back</button>
+            <h1 style="font-size:1.5rem;">System Settings</h1>
+            <div style="width:100px;"></div>
+        </div>
+        <div class="settings-card">
+            <h3 class="settings-section-title"><i class="fa-solid fa-store"></i> Store Information</h3>
+            <div class="settings-form-grid">
+                <div class="form-group"><label>Store Name</label><input type="text" value="PayTeodil Store"></div>
+                <div class="form-group"><label>Tax Rate (%)</label><input type="number" value="12"></div>
+                <div class="form-group" style="grid-column:span 2;"><label>Store Address</label><input type="text"
+                        value="Garchitorena, Camarines Sur"></div>
+            </div>
+            <button class="btn-primary" onclick="showToast('Store information saved!')">Save Store Details</button>
+        </div>
+        <div class="settings-card">
+            <h3 class="settings-section-title"><i class="fa-solid fa-sliders"></i> Preferences</h3>
+            <div class="toggle-row">
+                <div class="toggle-info">
+                    <h4>Auto-Print Receipts</h4>
+                    <p>Automatically print receipt after every completed sale.</p>
+                </div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+            </div>
+            <div class="toggle-row">
+                <div class="toggle-info">
+                    <h4>Dark Mode</h4>
+                    <p>Switch to dark theme.</p>
+                </div><label class="switch"><input type="checkbox" id="darkModeToggle"
+                        onchange="toggleDarkMode(this.checked)"><span class="slider"></span></label>
+            </div>
+            <div class="toggle-row">
+                <div class="toggle-info">
+                    <h4>Low Stock Alerts</h4>
+                    <p>Notify when stock falls below threshold.</p>
+                </div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h3 class="settings-section-title"><i class="fa-solid fa-user-lock"></i> Change Password</h3>
+            <div class="settings-form-grid">
+                <div class="form-group"><label>Current Password</label><input type="password" placeholder="••••••••">
+                </div>
+                <div class="form-group"><label>New Password</label><input type="password" placeholder="New password">
+                </div>
+            </div>
+            <button class="btn-primary" style="background:var(--danger-red);"
+                onclick="showToast('Password updated.')">Update Password</button>
+        </div>
+    </div>
+
+
+    <!-- ===================== VIEW 5: SITE MAP ===================== -->
+    <div id="sitemap-view" style="display:none;">
+        <div class="settings-header">
+            <button class="btn-outline" style="flex:none;width:auto;" onclick="showView('admin')"><i
+                    class="fa-solid fa-arrow-left"></i> Back to Dashboard</button>
+            <h1 style="font-size:1.5rem;"><i class="fa-solid fa-sitemap"></i> Navigation Flow / Site Map</h1>
+            <div style="width:120px;"></div>
+        </div>
+        <div class="sitemap-container">
+            <div class="sitemap-desc">
+                This diagram shows how all screens in PayDaily are connected. The system starts at the Home Page,
+                moves to Login, then branches based on user role — Manager sees the full dashboard, Staff only sees the
+                POS screen.
+            </div>
+            <div class="sitemap-wrapper">
+                <!-- Row 1: Home -->
+                <div class="sitemap-row">
+                    <div class="sitemap-node home-node">
+                        <i class="fa-solid fa-house"></i>
+                        <strong>Home Page</strong>
+                        <span>Landing / About</span>
+                    </div>
+                </div>
+                <div class="sitemap-arrow-down">↓</div>
+                <!-- Row 2: Login -->
+                <div class="sitemap-row">
+                    <div class="sitemap-node login-node">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <strong>Login Page</strong>
+                        <span>Role Selection + Auth</span>
+                    </div>
+                </div>
+                <div class="sitemap-arrow-down">↓ Role determines path ↓</div>
+                <!-- Row 3: Branch -->
+                <div class="sitemap-branch-row">
+                    <div class="sitemap-branch-col">
+                        <div class="sitemap-branch-label manager-label"><i class="fa-solid fa-store"></i> Manager Path
+                        </div>
+                        <div class="sitemap-node manager-node">
+                            <i class="fa-solid fa-border-all"></i>
+                            <strong>Dashboard</strong>
+                            <span>KPIs, Charts, Overview</span>
+                        </div>
+                        <div class="sitemap-sub-row">
+                            <div class="sitemap-sub-node">
+                                <i class="fa-solid fa-boxes-stacked"></i>
+                                <strong>Inventory</strong>
+                                <span>INPUT</span>
+                            </div>
+                            <div class="sitemap-sub-node">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <strong>Transactions</strong>
+                                <span>PROCESS</span>
+                            </div>
+                            <div class="sitemap-sub-node">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                <strong>Sales Reports</strong>
+                                <span>OUTPUT</span>
+                            </div>
+                            <div class="sitemap-sub-node additional">
+                                <i class="fa-solid fa-users-gear"></i>
+                                <strong>User Mgmt</strong>
+                                <span>ADDITIONAL</span>
+                            </div>
+                            <div class="sitemap-sub-node additional">
+                                <i class="fa-solid fa-gear"></i>
+                                <strong>Settings</strong>
+                                <span>ADDITIONAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sitemap-branch-divider"></div>
+                    <div class="sitemap-branch-col">
+                        <div class="sitemap-branch-label staff-label"><i class="fa-solid fa-id-badge"></i> Staff Path
+                        </div>
+                        <div class="sitemap-node staff-node">
+                            <i class="fa-solid fa-cash-register"></i>
+                            <strong>POS Screen</strong>
+                            <span>Process transactions</span>
+                        </div>
+                        <div class="sitemap-sub-row" style="justify-content:center;">
+                            <div class="sitemap-sub-node">
+                                <i class="fa-solid fa-receipt"></i>
+                                <strong>Receipt</strong>
+                                <span>OUTPUT</span>
+                            </div>
+                            <div class="sitemap-sub-node additional">
+                                <i class="fa-solid fa-gear"></i>
+                                <strong>Settings</strong>
+                                <span>ADDITIONAL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sitemap-legend">
+                <div class="legend-item"><span class="legend-dot input-dot"></span> INPUT — User enters data</div>
+                <div class="legend-item"><span class="legend-dot process-dot"></span> PROCESS — System handles logic
+                </div>
+                <div class="legend-item"><span class="legend-dot output-dot"></span> OUTPUT — Results displayed</div>
+                <div class="legend-item"><span class="legend-dot add-dot"></span> ADDITIONAL — Supporting features</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== RECEIPT MODAL ===================== -->
+    <div id="receipt-modal" class="modal-overlay" style="display:none;">
+        <div class="receipt-card">
+            <div class="receipt-header">
+                <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;margin-bottom:0.5rem;">PAY TEODIL
+                    STORE</h2>
+                <p style="font-size:0.85rem;margin-bottom:0.25rem;"> Garchitorena, Camarines Sur</p>
+                <div style="margin-top:1rem;font-size:0.85rem;display:flex;justify-content:space-between;">
+                    <span id="receipt-date"></span><span id="receipt-time"></span>
+                </div>
+                <div style="margin-top:0.25rem;font-size:0.85rem;">
+                    Receipt #: <span id="receipt-id"></span><br>
+                    Cashier: <span id="receipt-cashier"></span>
+                </div>
+            </div>
+            <table class="receipt-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th style="text-align:center;">Qty</th>
+                        <th style="text-align:right;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="receipt-items-body"></tbody>
+            </table>
+            <div class="receipt-totals">
+                <div><span>Subtotal:</span><span id="receipt-subtotal"></span></div>
+                <div><span>Tax (12%):</span><span id="receipt-tax"></span></div>
+                <div
+                    style="font-weight:bold;font-size:1.1rem;margin-top:0.5rem;border-top:1px dashed #ccc;padding-top:0.5rem;">
+                    <span>TOTAL:</span><span id="receipt-total"></span></div>
+                <div style="margin-top:0.5rem;"><span>Cash:</span><span id="receipt-cash"></span></div>
+                <div style="font-weight:bold;color:#059669;font-size:1.05rem;"><span>Change:</span><span
+                        id="receipt-change"></span></div>
+            </div>
+            <p style="text-align:center;font-size:0.85rem;margin-bottom:1.5rem;">Thank you for your purchase!</p>
+            <div class="receipt-actions">
+                <button class="btn-outline" style="flex:1;background:#fff;" onclick="closeReceipt()"><i
+                        class="fa-solid fa-arrow-left"></i> New Sale</button>
+                <button class="btn-primary" style="flex:1;" onclick="window.print()"><i class="fa-solid fa-print"></i>
+                    Print</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD PRODUCT MODAL -->
+    <div id="add-product-modal" class="modal-overlay" style="display:none;">
+        <div class="form-modal-card">
+            <h3 class="settings-section-title" style="margin-top:0;">Add New Product</h3>
+            <form id="addProductForm">
+                <div class="settings-form-grid">
+                    <div class="form-group" style="grid-column:span 2;"><label>Product Name</label><input type="text"
+                            id="newProdName" required></div>
+                    <div class="form-group"><label>SKU (Optional)</label><input type="text" id="newProdSku"></div>
+                    <div class="form-group"><label>Category</label>
+                        <select id="newProdCat">
+                            <option>School Supplies</option>
+                            <option>Bags</option>
+                            <option>Perfumes & Colognes</option>
+                            <option>Hardware</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Price (₱)</label><input type="number" id="newProdPrice" step="0.01"
+                            required></div>
+                    <div class="form-group"><label>Initial Stock</label><input type="number" id="newProdStock" required>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:1rem;margin-top:1.5rem;">
+                    <button type="button" class="btn-outline" style="flex:none;width:auto;"
+                        onclick="closeAddProductModal()">Cancel</button>
+                    <button type="submit" class="btn-primary" style="width:auto;">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADD USER MODAL -->
+    <div id="add-user-modal" class="modal-overlay" style="display:none;">
+        <div class="form-modal-card">
+            <h3 class="settings-section-title" style="margin-top:0;">Add New User</h3>
+            <form id="addUserForm">
+                <div class="settings-form-grid" style="display:flex;flex-direction:column;gap:1rem;">
+                    <div class="form-group" style="margin-bottom:0;"><label>Full Name</label><input type="text"
+                            id="newUserName" required></div>
+                    <div class="form-group" style="margin-bottom:0;"><label>Username</label><input type="text"
+                            id="newUserUsername" required></div>
+                    <div class="form-group" style="margin-bottom:0;"><label>Role</label>
+                        <select id="newUserRole">
+                            <option>Staff</option>
+                            <option>Manager</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;"><label>Password</label><input type="password"
+                            id="newUserPass" required></div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:1rem;margin-top:1.5rem;">
+                    <button type="button" class="btn-outline" style="flex:none;width:auto;"
+                        onclick="closeAddUserModal()">Cancel</button>
+                    <button type="submit" class="btn-primary" style="width:auto;">Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT PRODUCT MODAL -->
+    <div id="editProductModal" class="modal-overlay" style="display:none;">
+        <div class="form-modal-card">
+            <h3 class="settings-section-title" style="margin-top:0;">Edit Product</h3>
+            <form id="editProductForm">
+                <div class="settings-form-grid">
+                    <div class="form-group" style="grid-column:span 2;"><label>Product Name</label><input type="text"
+                            id="editProdName" required></div>
+                    <div class="form-group"><label>Category</label>
+                        <select id="editProdCat">
+                            <option>School Supplies</option>
+                            <option>Bags</option>
+                            <option>Perfumes & Colognes</option>
+                            <option>Hardware</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Price (₱)</label><input type="number" id="editProdPrice" step="0.01"
+                            required></div>
+                    <div class="form-group"><label>Stock Level</label><input type="number" id="editProdStock" required>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:1rem;margin-top:1.5rem;">
+                    <button type="button" class="btn-outline" style="flex:none;width:auto;"
+                        onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn-primary" style="width:auto;">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT USER MODAL -->
+    <div id="editUserModal" class="modal-overlay" style="display:none;">
+        <div class="form-modal-card">
+            <h3 class="settings-section-title" style="margin-top:0;">Edit User</h3>
+            <form id="editUserForm">
+                <div class="settings-form-grid" style="display:flex;flex-direction:column;gap:1rem;">
+                    <div class="form-group" style="margin-bottom:0;"><label>Full Name</label><input type="text"
+                            id="editUserName" required></div>
+                    <div class="form-group" style="margin-bottom:0;"><label>Username</label><input type="text"
+                            id="editUserUsername" required></div>
+                    <div class="form-group" style="margin-bottom:0;"><label>Role</label>
+                        <select id="editUserRole">
+                            <option>Staff</option>
+                            <option>Manager</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:1rem;margin-top:1.5rem;">
+                    <button type="button" class="btn-outline" style="flex:none;width:auto;"
+                        onclick="closeEditUserModal()">Cancel</button>
+                    <button type="submit" class="btn-primary" style="width:auto;">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

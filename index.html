@@ -43,44 +43,104 @@
                 <button class="btn-hero-outline" onclick="scrollToSection('features-section')"><i
                         class="fa-solid fa-play"></i> See Features</button>
             </div>
-            <div class="hero-stats-row">
-                <div class="hero-stat"><span class="stat-num">100%</span><span class="stat-label">Sales
-                        Visibility</span></div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat"><span class="stat-num">Real-Time</span><span class="stat-label">Inventory
-                        Tracking</span></div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat"><span class="stat-num">2 Roles</span><span class="stat-label">Manager &
-                        Staff</span></div>
+            <div class="hero-proof">
+                <div class="proof-badge">
+                    <span class="proof-dot"></span>
+                    <span>Works completely offline</span>
+                </div>
+                <div class="proof-trust">
+                    <span class="trust-hint">Built for sari-sari stores across the Philippines</span>
+                </div>
             </div>
         </section>
 
         <section class="features-section" id="features-section">
-            <div class="section-label">What PayDaily Does</div>
-            <h2 class="section-title">Everything the Store Needs</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon teal"><i class="fa-solid fa-cash-register"></i></div>
-                    <h3>Point-of-Sale</h3>
-                    <p>Staff can process transactions fast — select products, calculate totals, and print receipts in
-                        under 30 seconds.</p>
+            <div class="features-header">
+                <span class="section-eyebrow">Core Features</span>
+                <h2 class="section-title">Built for Real Stores</h2>
+            </div>
+            <div class="features-asymmetric">
+                <!-- Primary Feature: POS - Large, dominant -->
+                <div class="feature-primary">
+                    <div class="feature-primary-content">
+                        <div class="feature-badge">Most Used</div>
+                        <h3>Fast Checkout</h3>
+                        <p class="feature-lead">Process any sale in under 30 seconds. No training needed.</p>
+                        <ul class="feature-checks">
+                            <li>One-tap product selection</li>
+                            <li>Instant price calculation</li>
+                            <li>Receipt printing</li>
+                        </ul>
+                    </div>
+                    <div class="feature-primary-visual">
+                        <svg viewBox="0 0 200 160" class="feature-illustration">
+                            <!-- Stylized POS terminal -->
+                            <rect x="20" y="40" width="160" height="100" rx="8" fill="#0082E6" opacity="0.1"/>
+                            <rect x="30" y="50" width="140" height="70" rx="4" fill="#FFFFFF" stroke="#0082E6" stroke-width="2"/>
+                            <rect x="40" y="60" width="60" height="8" rx="2" fill="#0F172A"/>
+                            <rect x="40" y="75" width="100" height="4" rx="1" fill="#64748B"/>
+                            <rect x="40" y="85" width="80" height="4" rx="1" fill="#64748B"/>
+                            <rect x="110" y="95" width="50" height="20" rx="4" fill="#0082E6"/>
+                            <rect x="120" y="102" width="30" height="6" rx="1" fill="#FFFFFF"/>
+                            <rect x="75" y="130" width="50" height="4" rx="2" fill="#0082E6"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon blue"><i class="fa-solid fa-boxes-stacked"></i></div>
-                    <h3>Inventory Tracking</h3>
-                    <p>Stock levels update automatically after every sale. Get alerts before items run out — not after.
-                    </p>
+
+                <!-- Secondary Features: 2x2 Grid -->
+                <div class="feature-secondary inventory-feature">
+                    <div class="feature-icon-ring">
+                        <svg viewBox="0 0 48 48" class="custom-icon">
+                            <rect x="8" y="12" width="14" height="14" rx="2" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                            <rect x="26" y="12" width="14" height="14" rx="2" fill="none" stroke="#10B981" stroke-width="2.5" opacity="0.4"/>
+                            <rect x="8" y="30" width="14" height="14" rx="2" fill="none" stroke="#10B981" stroke-width="2.5" opacity="0.4"/>
+                            <rect x="26" y="30" width="14" height="14" rx="2" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <h4>Stock Tracking</h4>
+                    <p>Know what's on your shelves without counting.</p>
+                    <span class="feature-stat">Auto-updates</span>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon purple"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Sales Reports</h3>
-                    <p>Daily and monthly reports generated automatically. See best sellers, revenue trends, and product
-                        performance at a glance.</p>
+
+                <div class="feature-secondary reports-feature">
+                    <div class="feature-icon-ring">
+                        <svg viewBox="0 0 48 48" class="custom-icon">
+                            <rect x="6" y="28" width="8" height="14" rx="1" fill="#F59E0B"/>
+                            <rect x="18" y="18" width="8" height="24" rx="1" fill="#F59E0B" opacity="0.7"/>
+                            <rect x="30" y="8" width="8" height="34" rx="1" fill="#F59E0B" opacity="0.4"/>
+                            <path d="M8 20 L18 12 L26 16 L40 4" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Daily Reports</h4>
+                    <p>See today's sales before you close.</p>
+                    <span class="feature-stat">Real-time</span>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon orange"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Role-Based Access</h3>
-                    <p>Managers get full access. Staff only see what they need. Sensitive data stays protected.</p>
+
+                <div class="feature-secondary security-feature">
+                    <div class="feature-icon-ring">
+                        <svg viewBox="0 0 48 48" class="custom-icon">
+                            <rect x="12" y="20" width="24" height="20" rx="3" fill="none" stroke="#0082E6" stroke-width="2.5"/>
+                            <path d="M16 20 V14 Q16 8 24 8 Q32 8 32 14 V20" fill="none" stroke="#0082E6" stroke-width="2.5"/>
+                            <circle cx="24" cy="30" r="3" fill="#0082E6"/>
+                            <path d="M24 30 L24 26" stroke="#0082E6" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Staff & Manager</h4>
+                    <p>Different views for different roles.</p>
+                    <span class="feature-stat">2 roles</span>
+                </div>
+
+                <div class="feature-secondary offline-feature">
+                    <div class="feature-icon-ring">
+                        <svg viewBox="0 0 48 48" class="custom-icon">
+                            <circle cx="24" cy="24" r="16" fill="none" stroke="#0F172A" stroke-width="2.5"/>
+                            <path d="M24 12 L24 24 L32 28" fill="none" stroke="#0082E6" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M36 12 L44 12 M36 16 L42 16" stroke="#0F172A" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <h4>Works Offline</h4>
+                    <p>No internet? No problem. Everything saves locally.</p>
+                    <span class="feature-stat">Always on</span>
                 </div>
             </div>
         </section>
@@ -195,51 +255,49 @@
 
 
     <!-- ===================== VIEW 2: MANAGER DASHBOARD ===================== -->
-    <div id="admin-view" class="admin-wrapper" style="display:none;">
-        <aside class="sidebar">
-            <div class="sidebar-brand">
-                <img src="PayTeodilStore.png" alt="Logo"
-                    style="height:40px;width:40px;object-fit:contain;border-radius:8px;margin-right:0.5rem;"
-                    onerror="this.style.display='none'">
-                <div class="brand-text">
-                    <h2>PayTeodil</h2><span>Store</span>
+    <div id="admin-view" style="display:none;">
+        <!-- Top Navigation Bar -->
+        <header class="admin-topnav">
+            <div class="admin-brand">
+                <img src="PayTeodilStore.png" alt="Logo" class="admin-logo" onerror="this.style.display='none'">
+                <span class="admin-brand-text">PayTeodil Store</span>
+                <span class="admin-badge">Manager</span>
+            </div>
+            <nav class="admin-tabs">
+                <button class="admin-tab active" id="tab-dashboard" onclick="switchAdminTab('dashboard')">
+                    <i class="fa-solid fa-border-all"></i> Dashboard
+                </button>
+                <button class="admin-tab" id="tab-inventory" onclick="switchAdminTab('inventory')">
+                    <i class="fa-solid fa-boxes-stacked"></i> Inventory
+                </button>
+                <button class="admin-tab" id="tab-transactions" onclick="switchAdminTab('transactions')">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Transactions
+                </button>
+                <button class="admin-tab" id="tab-reports" onclick="switchAdminTab('reports')">
+                    <i class="fa-solid fa-chart-pie"></i> Reports
+                </button>
+                <button class="admin-tab tab-highlight" id="tab-clearance" onclick="switchAdminTab('clearance')">
+                    <i class="fa-solid fa-tags"></i> Clearance
+                </button>
+                <button class="admin-tab" id="tab-users" onclick="switchAdminTab('users')">
+                    <i class="fa-solid fa-users-gear"></i> Staff
+                </button>
+            </nav>
+            <div class="admin-actions">
+                <button class="admin-action-btn" onclick="showView('sitemap')" title="Site Map">
+                    <i class="fa-solid fa-sitemap"></i>
+                </button>
+                <button class="admin-action-btn" onclick="openSettings()" title="Settings">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <div class="admin-user">
+                    <span id="admin-user-name">Store Manager</span>
+                    <button class="admin-logout" onclick="handleLogout()" title="Log Out">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
                 </div>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a class="nav-link active" id="nav-dashboard"
-                        onclick="switchAdminTab('dashboard')"><i class="fa-solid fa-border-all"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-inventory" onclick="switchAdminTab('inventory')"><i
-                            class="fa-solid fa-boxes-stacked"></i> Inventory</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-transactions"
-                        onclick="switchAdminTab('transactions')"><i class="fa-solid fa-file-invoice-dollar"></i>
-                        Transactions</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-reports" onclick="switchAdminTab('reports')"><i
-                            class="fa-solid fa-chart-pie"></i> Sales Reports</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-clearance" onclick="switchAdminTab('clearance')"><i
-                            class="fa-solid fa-tags" style="color:#F43F5E;"></i> Clearance Sale</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-users" onclick="switchAdminTab('users')"><i
-                            class="fa-solid fa-users-gear"></i> User Management</a></li>
-                <div class="nav-section-title">System</div>
-                <li class="nav-item"><a class="nav-link" onclick="showView('sitemap')"><i
-                            class="fa-solid fa-sitemap"></i> Site Map</a></li>
-                <li class="nav-item"><a class="nav-link" onclick="openSettings()"><i class="fa-solid fa-gear"></i>
-                        Settings</a></li>
-                <li class="nav-item nav-logout-mobile"><a class="nav-link" onclick="handleLogout()"
-                        style="color:var(--danger-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log
-                        Out</a></li>
-            </ul>
-            <div class="sidebar-footer">
-                <div class="user-profile">
-                    <div class="avatar"><i class="fa-solid fa-building"></i></div>
-                    <div class="user-info">
-                        <h4 id="admin-user-name">Store Manager</h4>
-                        <span id="admin-user-role">Manager</span>
-                    </div>
-                </div>
-                <button class="logout-btn" title="Log Out" onclick="handleLogout()"><i
-                        class="fa-solid fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </aside>
+        </header>
 
         <div class="content-area">
 
@@ -294,39 +352,69 @@
                         </div>
                     </div>
                 </header>
-                <section class="kpi-grid">
-                    <div class="kpi-card blue">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-peso-sign"></i></div><span
-                                class="kpi-badge badge-positive" style="display:none;">+0.0% <i
-                                    class="fa-solid fa-arrow-trend-up"></i></span>
+                <section class="kpi-grid bolder-kpi">
+                    <!-- Sales Card -->
+                    <div class="kpi-card kpi-sales">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="8" y="20" width="48" height="36" rx="4" fill="#E5F3FF" stroke="#0082E6" stroke-width="2"/>
+                                <rect x="16" y="28" width="32" height="4" rx="1" fill="#0082E6"/>
+                                <rect x="16" y="36" width="24" height="4" rx="1" fill="#0082E6" opacity="0.6"/>
+                                <rect x="16" y="44" width="28" height="4" rx="1" fill="#0082E6" opacity="0.3"/>
+                                <text x="32" y="16" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">₱</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Today's Sales</div>
-                            <div class="kpi-value">₱0.00</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Today's Sales</span>
+                                <span class="kpi-trend" id="salesTrend" style="display:none;">+0%</span>
+                            </div>
+                            <div class="kpi-number" id="todaySales">₱0.00</div>
+                            <div class="kpi-sub">vs yesterday</div>
                         </div>
                     </div>
-                    <div class="kpi-card green">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-receipt"></i></div><span
-                                class="kpi-badge badge-positive" style="display:none;">+0.0% <i
-                                    class="fa-solid fa-arrow-trend-up"></i></span>
+
+                    <!-- Transactions Card -->
+                    <div class="kpi-card kpi-transactions">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="12" y="8" width="40" height="48" rx="4" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <line x1="20" y1="20" x2="44" y2="20" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="20" y1="28" x2="40" y2="28" stroke="#10B981" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <line x1="20" y1="36" x2="36" y2="36" stroke="#10B981" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+                                <circle cx="44" cy="44" r="8" fill="#10B981"/>
+                                <text x="44" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="white">#</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Total Transactions</div>
-                            <div class="kpi-value">0</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Transactions</span>
+                                <span class="kpi-trend" id="txnTrend" style="display:none;">+0%</span>
+                            </div>
+                            <div class="kpi-number" id="todayTxns">0</div>
+                            <div class="kpi-sub">sales completed</div>
                         </div>
                     </div>
-                    <div class="kpi-card orange" style="cursor:pointer;"
+
+                    <!-- Low Stock Card -->
+                    <div class="kpi-card kpi-alerts" style="cursor:pointer;"
                         onclick="switchAdminTab('inventory'); document.getElementById('invStatusFilter').value='Low Stock'; filterInventory(); showToast('Showing low stock items')">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><span
-                                class="kpi-badge badge-danger">Click to View</span>
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="14" y="8" width="36" height="44" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <rect x="20" y="16" width="24" height="6" rx="1" fill="#F59E0B" opacity="0.3"/>
+                                <rect x="20" y="26" width="18" height="4" rx="1" fill="#F59E0B" opacity="0.5"/>
+                                <circle cx="32" cy="40" r="10" fill="#F59E0B"/>
+                                <text x="32" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="white">!</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Low Stock Alerts</div>
-                            <div class="kpi-value">3 <span
-                                    style="font-size:1rem;color:var(--text-muted);font-weight:500;">Items</span></div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Low Stock</span>
+                                <span class="kpi-action">View →</span>
+                            </div>
+                            <div class="kpi-number" id="lowStockCount">3</div>
+                            <div class="kpi-sub">items need restock</div>
                         </div>
                     </div>
                 </section>
@@ -348,9 +436,16 @@
                             <h3 class="card-title">Best Selling Products</h3>
                             <a class="card-action" onclick="switchAdminTab('inventory')">View All</a>
                         </div>
-                        <div class="product-list">
+                        <div class="product-list bolder-products">
                             <div class="product-item">
-                                <div class="product-icon"><i class="fa-solid fa-pen"></i></div>
+                                <div class="product-icon product-icon-pen">
+                                    <svg viewBox="0 0 48 48">
+                                        <rect x="12" y="6" width="24" height="8" rx="2" fill="#DBEAFE" stroke="#0082E6" stroke-width="2"/>
+                                        <rect x="16" y="14" width="16" height="28" rx="2" fill="#FFFFFF" stroke="#0082E6" stroke-width="2"/>
+                                        <line x1="20" y1="20" x2="28" y2="20" stroke="#0082E6" stroke-width="2"/>
+                                        <line x1="20" y1="26" x2="28" y2="26" stroke="#0082E6" stroke-width="2"/>
+                                    </svg>
+                                </div>
                                 <div class="product-details">
                                     <div class="product-name">Ballpen Set (12pcs)</div>
                                     <div class="product-sales">34 sold today</div>
@@ -358,7 +453,15 @@
                                 <div class="product-revenue">₱510.00</div>
                             </div>
                             <div class="product-item">
-                                <div class="product-icon"><i class="fa-solid fa-book"></i></div>
+                                <div class="product-icon product-icon-book">
+                                    <svg viewBox="0 0 48 48">
+                                        <rect x="10" y="4" width="28" height="40" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                        <line x1="24" y1="4" x2="24" y2="44" stroke="#F59E0B" stroke-width="2"/>
+                                        <line x1="16" y1="12" x2="20" y2="12" stroke="#F59E0B" stroke-width="2"/>
+                                        <line x1="16" y1="20" x2="20" y2="20" stroke="#F59E0B" stroke-width="2"/>
+                                        <line x1="16" y1="28" x2="20" y2="28" stroke="#F59E0B" stroke-width="2"/>
+                                    </svg>
+                                </div>
                                 <div class="product-details">
                                     <div class="product-name">Notebook A4 (80 leaves)</div>
                                     <div class="product-sales">28 sold today</div>
@@ -366,7 +469,15 @@
                                 <div class="product-revenue">₱700.00</div>
                             </div>
                             <div class="product-item">
-                                <div class="product-icon"><i class="fa-solid fa-spray-can"></i></div>
+                                <div class="product-icon product-icon-spray">
+                                    <svg viewBox="0 0 48 48">
+                                        <rect x="18" y="8" width="12" height="20" rx="2" fill="#E5F3FF" stroke="#0082E6" stroke-width="2"/>
+                                        <rect x="20" y="28" width="8" height="12" rx="1" fill="#FFFFFF" stroke="#0082E6" stroke-width="2"/>
+                                        <circle cx="24" cy="16" r="3" fill="#0082E6"/>
+                                        <path d="M28 12 L32 8" stroke="#0082E6" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M28 20 L32 24" stroke="#0082E6" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
                                 <div class="product-details">
                                     <div class="product-name">Cologne Spray 100ml</div>
                                     <div class="product-sales">12 sold today</div>
@@ -432,40 +543,79 @@
                         <option>Out of Stock</option>
                     </select>
                 </div>
-                <div class="inventory-kpi-grid">
-                    <div class="kpi-card blue">
-                        <div class="kpi-header">
-                            <div class="kpi-title" style="margin-bottom:0;">Total Products</div>
-                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
-                                    class="fa-solid fa-box"></i></div>
+                <section class="kpi-grid bolder-kpi inventory-kpi">
+                    <div class="kpi-card kpi-sales">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="12" y="16" width="40" height="32" rx="4" fill="#E5F3FF" stroke="#0082E6" stroke-width="2"/>
+                                <rect x="18" y="22" width="20" height="4" rx="1" fill="#0082E6"/>
+                                <rect x="18" y="30" width="28" height="4" rx="1" fill="#0082E6" opacity="0.6"/>
+                                <rect x="18" y="38" width="24" height="4" rx="1" fill="#0082E6" opacity="0.4"/>
+                                <text x="52" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#0082E6">#</text>
+                            </svg>
                         </div>
-                        <div class="kpi-value" id="inv-total">18</div>
-                    </div>
-                    <div class="kpi-card orange">
-                        <div class="kpi-header">
-                            <div class="kpi-title" style="margin-bottom:0;">Low Stock</div>
-                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
-                                    class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Total Products</span>
+                            </div>
+                            <div class="kpi-number" id="inv-total">18</div>
+                            <div class="kpi-sub">in catalog</div>
                         </div>
-                        <div class="kpi-value text-orange">3</div>
                     </div>
-                    <div class="kpi-card red">
-                        <div class="kpi-header">
-                            <div class="kpi-title" style="margin-bottom:0;">Out of Stock</div>
-                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
-                                    class="fa-solid fa-cart-arrow-down"></i></div>
+                    <div class="kpi-card kpi-alerts">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="16" y="12" width="32" height="40" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <rect x="22" y="18" width="20" height="3" rx="1" fill="#F59E0B" opacity="0.3"/>
+                                <rect x="22" y="26" width="16" height="2" rx="1" fill="#F59E0B" opacity="0.5"/>
+                                <circle cx="32" cy="38" r="6" fill="#F59E0B"/>
+                                <text x="32" y="41" text-anchor="middle" font-size="10" font-weight="700" fill="white">!</text>
+                            </svg>
                         </div>
-                        <div class="kpi-value text-red">1</div>
-                    </div>
-                    <div class="kpi-card green">
-                        <div class="kpi-header">
-                            <div class="kpi-title" style="margin-bottom:0;">Total Value</div>
-                            <div class="kpi-icon" style="width:32px;height:32px;font-size:1rem;"><i
-                                    class="fa-solid fa-peso-sign"></i></div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Low Stock</span>
+                                <span class="kpi-action">View →</span>
+                            </div>
+                            <div class="kpi-number text-orange">3</div>
+                            <div class="kpi-sub">need reorder</div>
                         </div>
-                        <div class="kpi-value text-green">₱28,450</div>
                     </div>
-                </div>
+                    <div class="kpi-card kpi-transactions">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="12" y="20" width="40" height="28" rx="3" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+                                <line x1="20" y1="28" x2="44" y2="28" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="20" y1="34" x2="36" y2="34" stroke="#EF4444" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <circle cx="46" cy="22" r="8" fill="#EF4444"/>
+                                <text x="46" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="white">0</text>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Out of Stock</span>
+                            </div>
+                            <div class="kpi-number text-red">1</div>
+                            <div class="kpi-sub">unavailable</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card kpi-transactions" style="border-left-color:#10B981;">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="32" r="24" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <text x="32" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#10B981">₱</text>
+                                <path d="M20 40 Q32 48 44 40" stroke="#10B981" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Inventory Value</span>
+                            </div>
+                            <div class="kpi-number text-green">₱28,450</div>
+                            <div class="kpi-sub">total worth</div>
+                        </div>
+                    </div>
+                </section>
                 <section class="card" style="padding:0;">
                     <div style="padding:0 1.5rem;">
                         <table id="inventoryTable">
@@ -798,6 +948,64 @@
                     automatically when a sale is processed through the POS. The manager can view, search, and export
                     transaction history for financial review.
                 </div>
+                <section class="kpi-grid bolder-kpi" style="grid-template-columns:repeat(3,1fr); margin-bottom:1rem;">
+                    <div class="kpi-card kpi-sales">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="12" y="20" width="40" height="28" rx="3" fill="#E5F3FF" stroke="#0082E6" stroke-width="2"/>
+                                <circle cx="24" cy="34" r="6" fill="#0082E6"/>
+                                <text x="24" y="38" text-anchor="middle" font-size="8" font-weight="700" fill="white">₱</text>
+                                <rect x="34" y="28" width="14" height="2" rx="1" fill="#0082E6" opacity="0.4"/>
+                                <rect x="34" y="32" width="10" height="2" rx="1" fill="#0082E6" opacity="0.6"/>
+                                <rect x="34" y="36" width="12" height="2" rx="1" fill="#0082E6"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Today's Sales</span>
+                            </div>
+                            <div class="kpi-number" id="txnTodaySales">₱0.00</div>
+                            <div class="kpi-sub">revenue</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card kpi-transactions">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="14" y="12" width="36" height="40" rx="4" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <line x1="20" y1="22" x2="44" y2="22" stroke="#10B981" stroke-width="2"/>
+                                <line x1="20" y1="30" x2="38" y2="30" stroke="#10B981" stroke-width="2" opacity="0.6"/>
+                                <line x1="20" y1="38" x2="34" y2="38" stroke="#10B981" stroke-width="2" opacity="0.4"/>
+                                <circle cx="44" cy="44" r="6" fill="#10B981"/>
+                                <text x="44" y="47" text-anchor="middle" font-size="8" font-weight="700" fill="white">#</text>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Transactions</span>
+                            </div>
+                            <div class="kpi-number" id="txnTodayCount">0</div>
+                            <div class="kpi-sub">today</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card kpi-alerts" style="cursor:pointer;" onclick="switchAdminTab('reports')">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="32" r="20" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <path d="M32 22 L32 36" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="32" cy="42" r="3" fill="#F59E0B"/>
+                                <path d="M48 16 L52 12 M52 20 L48 16" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Need Reports?</span>
+                                <span class="kpi-action">View →</span>
+                            </div>
+                            <div class="kpi-number" style="font-size:1rem; color:var(--text-muted);">Go to Reports</div>
+                            <div class="kpi-sub">for detailed analytics</div>
+                        </div>
+                    </div>
+                </section>
                 <section class="card" style="padding:0;">
                     <div style="padding:0 1.5rem;">
                         <table>
@@ -845,43 +1053,78 @@
                     revenue, transaction counts, best-selling products, and visual charts. Data is pulled from the
                     Transactions and Inventory databases automatically.
                 </div>
-                <section class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
-                    <div class="kpi-card blue">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-peso-sign"></i></div><span
-                                class="kpi-badge badge-positive" style="display:none;">+0.0%</span>
+                <section class="kpi-grid bolder-kpi reports-kpi" style="grid-template-columns:repeat(4,1fr);">
+                    <div class="kpi-card kpi-sales">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="8" y="32" width="12" height="24" rx="2" fill="#0082E6"/>
+                                <rect x="26" y="20" width="12" height="36" rx="2" fill="#0082E6" opacity="0.7"/>
+                                <rect x="44" y="8" width="12" height="48" rx="2" fill="#0082E6" opacity="0.4"/>
+                                <path d="M16 24 L28 12 L40 18 L56 6" stroke="#0F172A" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <text x="32" y="62" text-anchor="middle" font-size="10" font-weight="600" fill="#0082E6">REVENUE</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Monthly Revenue</div>
-                            <div class="kpi-value">₱0</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Revenue</span>
+                                <span class="kpi-trend" id="revenueTrend" style="display:none;">+0%</span>
+                            </div>
+                            <div class="kpi-number">₱0</div>
+                            <div class="kpi-sub">this period</div>
                         </div>
                     </div>
-                    <div class="kpi-card green">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-receipt"></i></div><span
-                                class="kpi-badge badge-positive" style="display:none;">+0.0%</span>
+                    <div class="kpi-card kpi-transactions">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="12" y="12" width="40" height="40" rx="4" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <rect x="18" y="20" width="28" height="4" rx="1" fill="#10B981"/>
+                                <rect x="18" y="28" width="20" height="2" rx="1" fill="#10B981" opacity="0.6"/>
+                                <rect x="18" y="34" width="24" height="2" rx="1" fill="#10B981" opacity="0.4"/>
+                                <circle cx="44" cy="44" r="8" fill="#10B981"/>
+                                <text x="44" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="white">#</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Total Transactions</div>
-                            <div class="kpi-value">0</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Transactions</span>
+                                <span class="kpi-trend" id="txnCountTrend" style="display:none;">+0%</span>
+                            </div>
+                            <div class="kpi-number">0</div>
+                            <div class="kpi-sub">sales completed</div>
                         </div>
                     </div>
-                    <div class="kpi-card purple">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                    <div class="kpi-card kpi-transactions" style="border-left-color:#9333EA;">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="32" r="20" fill="#F3E8FF" stroke="#9333EA" stroke-width="2"/>
+                                <text x="32" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#9333EA">₱</text>
+                                <path d="M24 36 L32 44 L40 36" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Avg. Order Value</div>
-                            <div class="kpi-value">₱0.00</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Avg Order</span>
+                            </div>
+                            <div class="kpi-number" style="color:#9333EA;">₱0.00</div>
+                            <div class="kpi-sub">per transaction</div>
                         </div>
                     </div>
-                    <div class="kpi-card orange">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="kpi-card kpi-alerts">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="16" y="8" width="32" height="48" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <rect x="22" y="16" width="20" height="4" rx="1" fill="#F59E0B" opacity="0.4"/>
+                                <rect x="22" y="24" width="14" height="3" rx="1" fill="#F59E0B" opacity="0.6"/>
+                                <circle cx="32" cy="40" r="8" fill="#F59E0B"/>
+                                <text x="32" y="44" text-anchor="middle" font-size="12" font-weight="700" fill="white">★</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Top Category</div>
-                            <div class="kpi-value" style="font-size:1.2rem;">None</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Top Category</span>
+                            </div>
+                            <div class="kpi-number" style="font-size:1.1rem;">None</div>
+                            <div class="kpi-sub">best performer</div>
                         </div>
                     </div>
                 </section>
@@ -924,70 +1167,114 @@
                 <header class="topbar">
                     <div class="page-title">
                         <h1>Clearance Sale Management</h1>
-                        <p>Identify slow-moving inventory and manage clearance discounts to drive sales.</p>
+                        <p>Select slow-moving items and apply discounts to push inventory.</p>
                     </div>
                     <div class="topbar-actions">
                         <div style="display:flex; align-items:center; gap:0.5rem; margin-right: 1rem;">
                             <label class="switch"><input type="checkbox" id="clearanceFeatureToggle" checked onchange="toggleClearanceFeature(this.checked)"><span class="slider"></span></label>
-                            <strong>Feature Active</strong>
+                            <strong>Show in POS</strong>
                         </div>
-                        <button class="btn-primary" onclick="forceClearanceScan()"><i class="fa-solid fa-rotate"></i> Run Scan</button>
+                        <button class="btn-primary" onclick="forceClearanceScan()"><i class="fa-solid fa-rotate"></i> Refresh List</button>
                     </div>
                 </header>
                 <div class="screen-desc-banner">
                     <i class="fa-solid fa-circle-info"></i>
-                    <strong>PROMO PAGE</strong> — Automatically identifies items with 0-2 sales in the last 14 days OR 30+ days in inventory. Discounts can be applied to push inventory during high-traffic weeks. The "Clearance" category appears in the POS when active.
+                    <strong>PROMO PAGE</strong> — Manually select items with low sales (0-2 in 14 days) or old inventory (30+ days). Apply discounts and they appear in the POS Clearance category.
                 </div>
-                
-                <section class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
-                    <div class="kpi-card orange">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+
+                <section class="kpi-grid bolder-kpi" style="grid-template-columns:repeat(3,1fr);">
+                    <div class="kpi-card kpi-alerts">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="32" r="24" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <path d="M32 20 L32 36" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="32" cy="44" r="3" fill="#F59E0B"/>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Slow Moving Items</div>
-                            <div class="kpi-value" id="clearanceSlowCount">0</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Slow Moving</span>
+                            </div>
+                            <div class="kpi-number" id="clearanceSlowCount">0</div>
+                            <div class="kpi-sub">items detected</div>
                         </div>
                     </div>
-                    <div class="kpi-card green">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div class="kpi-card kpi-transactions">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="12" y="16" width="40" height="32" rx="4" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <path d="M22 32 L30 40 L42 24" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <text x="32" y="12" text-anchor="middle" font-size="12" font-weight="700" fill="#10B981">%</text>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Active Clearance Items</div>
-                            <div class="kpi-value" id="clearanceActiveCount">0</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">On Clearance</span>
+                            </div>
+                            <div class="kpi-number" id="clearanceActiveCount">0</div>
+                            <div class="kpi-sub">active discounts</div>
                         </div>
                     </div>
-                    <div class="kpi-card blue">
-                        <div class="kpi-header">
-                            <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="kpi-card kpi-sales">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <rect x="8" y="36" width="12" height="20" rx="2" fill="#0082E6"/>
+                                <rect x="26" y="24" width="12" height="32" rx="2" fill="#0082E6" opacity="0.7"/>
+                                <rect x="44" y="12" width="12" height="44" rx="2" fill="#0082E6" opacity="0.4"/>
+                                <path d="M16 28 L28 16 L40 20 L56 8" stroke="#0F172A" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            </svg>
                         </div>
                         <div class="kpi-content">
-                            <div class="kpi-title">Weekly Sales Volume</div>
-                            <div class="kpi-value" id="clearanceVolumeStatus" style="font-size: 1.25rem;">Checking...</div>
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Est. Weekly Volume</span>
+                            </div>
+                            <div class="kpi-number" id="clearanceVolumeStatus" style="font-size:1.25rem;">—</div>
+                            <div class="kpi-sub">sales activity</div>
                         </div>
                     </div>
                 </section>
-                
-                <section class="card" style="padding:0;">
-                    <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem;">
-                        <h3 class="card-title">Clearance Eligible Products</h3>
+
+                <!-- Bulk Actions Bar -->
+                <section class="card" style="margin-bottom:1rem; padding:1rem 1.5rem;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+                        <div style="display:flex; align-items:center; gap:1rem;">
+                            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; font-size:0.9rem; font-weight:500;">
+                                <input type="checkbox" id="selectAllClearance" onchange="toggleSelectAllClearance(this.checked)">
+                                Select All
+                            </label>
+                            <span id="selectedCount" style="font-size:0.85rem; color:var(--text-muted);">0 selected</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:0.75rem;">
+                            <select id="bulkDiscount" style="padding:0.5rem 1rem; border-radius:6px; border:1px solid var(--border-color); font-size:0.9rem;">
+                                <option value="">Apply Discount...</option>
+                                <option value="10">10% Off</option>
+                                <option value="20">20% Off</option>
+                                <option value="30">30% Off</option>
+                                <option value="50">50% Off</option>
+                            </select>
+                            <button class="btn-primary" onclick="applyBulkDiscount()" style="white-space:nowrap;">Apply to Selected</button>
+                            <button class="btn-outline" onclick="removeSelectedFromClearance()" style="border:1px solid var(--danger-red); color:var(--danger-red); background:transparent; padding:0.5rem 1rem; border-radius:6px; cursor:pointer;">Remove</button>
+                        </div>
                     </div>
+                </section>
+
+                <section class="card" style="padding:0;">
                     <div style="padding:0 1.5rem;">
-                        <table>
+                        <table class="clearance-table">
                             <thead>
                                 <tr>
+                                    <th style="width:40px;"><input type="checkbox" id="headerSelectAll" onchange="toggleSelectAllClearance(this.checked)"></th>
                                     <th>Product</th>
                                     <th>Category</th>
-                                    <th>Status Trigger</th>
+                                    <th>Trigger</th>
                                     <th>Current Price</th>
-                                    <th>Clearance Discount</th>
+                                    <th>Discount</th>
                                     <th>Final Price</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody id="clearanceBody">
-                                <!-- Automatically populated by js -->
+                                <!-- Populated by js -->
                             </tbody>
                         </table>
                     </div>
@@ -998,12 +1285,12 @@
             <main class="main-content" id="users-content" style="display:none;">
                 <header class="topbar">
                     <div class="page-title">
-                        <h1>User Management</h1>
-                        <p>Manage staff accounts and access permissions.</p>
+                        <h1>Staff Management</h1>
+                        <p>Manage team accounts and access permissions.</p>
                     </div>
                     <div class="topbar-actions">
                         <button class="btn-primary" onclick="openAddUserModal()"><i class="fa-solid fa-plus"></i> Add
-                            User</button>
+                            Staff</button>
                     </div>
                 </header>
                 <div class="screen-desc-banner">
@@ -1012,56 +1299,131 @@
                     and their roles. The manager can add new staff accounts or remove existing ones. This enforces the
                     role-based access control of PayDaily.
                 </div>
-                <section class="card" style="padding:0;">
-                    <div style="padding:0 1.5rem;">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Role</th>
-                                    <th>Last Login</th>
-                                    <th>Status</th>
-                                    <th style="text-align:right;">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="usersBody">
-                                <tr>
-                                    <td>
-                                        <div style="font-weight:600;">Store Owner</div>
-                                        <div style="font-size:0.75rem;color:var(--text-muted);">ID: USR-001</div>
-                                    </td>
-                                    <td style="color:var(--text-muted);">manager</td>
-                                    <td><span class="status-pill"
-                                            style="background:#EDE9FE;color:#6D28D9;">Manager</span></td>
-                                    <td style="color:var(--text-muted);">Today, 8:00 AM</td>
-                                    <td><span class="status-pill status-instock">Active</span></td>
-                                    <td>
-                                        <div class="table-actions" style="justify-content:flex-end;"><i
-                                                class="fa-solid fa-eye action-icon" onclick="alert('View profile')"></i>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="font-weight:600;">Jane Doe</div>
-                                        <div style="font-size:0.75rem;color:var(--text-muted);">ID: USR-002</div>
-                                    </td>
-                                    <td style="color:var(--text-muted);">staff</td>
-                                    <td><span class="status-pill" style="background:#D1FAE5;color:#065F46;">Staff</span>
-                                    </td>
-                                    <td style="color:var(--text-muted);">Today, 9:00 AM</td>
-                                    <td><span class="status-pill status-instock">Active</span></td>
-                                    <td>
-                                        <div class="table-actions" style="justify-content:flex-end;"><i
-                                                class="fa-solid fa-pen action-icon"
-                                                onclick="openEditUserModal(this)"></i><i
-                                                class="fa-solid fa-trash-can action-icon delete"
-                                                onclick="alert('Remove user account?')"></i></div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                <!-- Staff Stats -->
+                <section class="kpi-grid bolder-kpi" style="grid-template-columns:repeat(3,1fr); margin-bottom:1rem;">
+                    <div class="kpi-card kpi-sales" style="border-left-color:#9333EA;">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="24" r="14" fill="#EDE9FE" stroke="#9333EA" stroke-width="2"/>
+                                <text x="32" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#9333EA">M</text>
+                                <path d="M16 44 Q32 52 48 44" stroke="#9333EA" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <rect x="20" y="50" width="24" height="6" rx="2" fill="#9333EA" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Manager</span>
+                            </div>
+                            <div class="kpi-number" style="color:#9333EA;">1</div>
+                            <div class="kpi-sub">full access</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card kpi-transactions" style="border-left-color:#10B981;">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="24" r="14" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <text x="32" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#10B981">S</text>
+                                <path d="M16 44 Q32 52 48 44" stroke="#10B981" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <rect x="20" y="50" width="24" height="6" rx="2" fill="#10B981" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Staff</span>
+                            </div>
+                            <div class="kpi-number" style="color:#10B981;">1</div>
+                            <div class="kpi-sub">POS only</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card kpi-alerts" style="border-left-color:#F59E0B;">
+                        <div class="kpi-visual">
+                            <svg viewBox="0 0 64 64" class="kpi-illustration">
+                                <circle cx="32" cy="32" r="20" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <circle cx="24" cy="28" r="4" fill="#F59E0B"/>
+                                <circle cx="40" cy="28" r="4" fill="#F59E0B"/>
+                                <path d="M26 40 Q32 46 38 40" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-header-row">
+                                <span class="kpi-label">Active Now</span>
+                            </div>
+                            <div class="kpi-number" style="color:#F59E0B;">2</div>
+                            <div class="kpi-sub">users online</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Staff Cards -->
+                <section class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar manager">
+                                <svg viewBox="0 0 48 48">
+                                    <circle cx="24" cy="18" r="10" fill="#EDE9FE" stroke="#9333EA" stroke-width="2"/>
+                                    <text x="24" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#9333EA">M</text>
+                                    <path d="M8 40 Q24 48 40 40" stroke="#9333EA" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="staff-info">
+                                <div class="staff-name">Store Manager</div>
+                                <div class="staff-id">ID: USR-001</div>
+                            </div>
+                            <span class="staff-badge manager">Manager</span>
+                        </div>
+                        <div class="staff-details">
+                            <div class="staff-detail">
+                                <i class="fa-solid fa-user"></i>
+                                <span>Username: <strong>manager</strong></span>
+                            </div>
+                            <div class="staff-detail">
+                                <i class="fa-solid fa-clock"></i>
+                                <span>Last Login: <strong>Today, 8:00 AM</strong></span>
+                            </div>
+                            <div class="staff-detail">
+                                <i class="fa-solid fa-circle-check" style="color:var(--success-green);"></i>
+                                <span>Status: <strong style="color:var(--success-green);">Active</strong></span>
+                            </div>
+                        </div>
+                        <div class="staff-actions">
+                            <button class="btn-outline" onclick="alert('View profile')"><i class="fa-solid fa-eye"></i> View</button>
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar staff">
+                                <svg viewBox="0 0 48 48">
+                                    <circle cx="24" cy="18" r="10" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                    <text x="24" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#10B981">S</text>
+                                    <path d="M8 40 Q24 48 40 40" stroke="#10B981" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="staff-info">
+                                <div class="staff-name">Jane Doe</div>
+                                <div class="staff-id">ID: USR-002</div>
+                            </div>
+                            <span class="staff-badge staff">Staff</span>
+                        </div>
+                        <div class="staff-details">
+                            <div class="staff-detail">
+                                <i class="fa-solid fa-user"></i>
+                                <span>Username: <strong>staff</strong></span>
+                            </div>
+                            <div class="staff-detail">
+                                <i class="fa-solid fa-clock"></i>
+                                <span>Last Login: <strong>Today, 9:00 AM</strong></span>
+                            </div>
+                            <div class="staff-detail">
+                                <i class="fa-solid fa-circle-check" style="color:var(--success-green);"></i>
+                                <span>Status: <strong style="color:var(--success-green);">Active</strong></span>
+                            </div>
+                        </div>
+                        <div class="staff-actions">
+                            <button class="btn-outline" onclick="openEditUserModal(this)"><i class="fa-solid fa-pen"></i> Edit</button>
+                            <button class="btn-outline" style="border-color:var(--danger-red); color:var(--danger-red);" onclick="alert('Remove user account?')"><i class="fa-solid fa-trash"></i> Remove</button>
+                        </div>
                     </div>
                 </section>
             </main>
@@ -1095,6 +1457,14 @@
             or browse products, add them to the cart, then complete the sale. The system automatically calculates the
             total and generates a receipt.
         </div>
+        <div id="pos-clearance-alert" class="pos-clearance-alert" style="display:none;">
+            <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="12" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">%</text></svg>
+            <div class="alert-content">
+                <strong>Sale Items Available!</strong>
+                <span>Tap the <span class="pill-ref">Clearance</span> category to see discounted items.</span>
+            </div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
         <div class="pos-main-wrapper">
             <div class="pos-products-area">
                 <div class="pos-search-bar">
@@ -1102,13 +1472,13 @@
                     <input type="text" id="posSearchInput" placeholder="Search products by name..."
                         onkeyup="searchProducts(this.value)">
                 </div>
-                <div class="pos-categories" id="posCategoryContainer">
-                    <div class="category-pill clearance-pill" style="display:none; background:#FFF1F2; color:#E11D48; border-color:#FDA4AF; font-weight:700;" onclick="filterProducts('Clearance',this)"><i class="fa-solid fa-tags"></i> Clearance</div>
-                    <div class="category-pill active" onclick="filterProducts('All Items',this)">All Items</div>
-                    <div class="category-pill" onclick="filterProducts('School Supplies',this)">School Supplies</div>
-                    <div class="category-pill" onclick="filterProducts('Bags',this)">Bags</div>
-                    <div class="category-pill" onclick="filterProducts('Perfumes & Colognes',this)">Perfumes</div>
-                    <div class="category-pill" onclick="filterProducts('Hardware',this)">Hardware</div>
+                <div class="pos-categories bolder-categories" id="posCategoryContainer">
+                    <div class="category-pill clearance-pill" style="display:none;" onclick="filterProducts('Clearance',this)"><svg viewBox="0 0 16 16" width="14" height="14"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="2"/><text x="8" y="11" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor">%</text></svg> Clearance</div>
+                    <div class="category-pill active" onclick="filterProducts('All Items',this)"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="2" width="5" height="5" rx="1" fill="currentColor" opacity="0.6"/><rect x="9" y="2" width="5" height="5" rx="1" fill="currentColor"/><rect x="2" y="9" width="5" height="5" rx="1" fill="currentColor"/><rect x="9" y="9" width="5" height="5" rx="1" fill="currentColor" opacity="0.6"/></svg> All Items</div>
+                    <div class="category-pill" onclick="filterProducts('School Supplies',this)"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="4" y="2" width="8" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="5" x2="10" y2="5" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="8" x2="9" y2="8" stroke="currentColor" stroke-width="1.5" opacity="0.6"/></svg> School Supplies</div>
+                    <div class="category-pill" onclick="filterProducts('Bags',this)"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="3" y="5" width="10" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 5 V3 Q6 2 8 2 Q10 2 10 3 V5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Bags</div>
+                    <div class="category-pill" onclick="filterProducts('Perfumes & Colognes',this)"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="6" y="3" width="4" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="10" width="6" height="3" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" fill="currentColor" opacity="0.4"/></svg> Perfumes</div>
+                    <div class="category-pill" onclick="filterProducts('Hardware',this)"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="4" y="4" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="0.8" fill="currentColor"/></svg> Hardware</div>
                 </div>
                 <div class="pos-grid" id="productGrid"></div>
             </div>
@@ -1119,12 +1489,20 @@
                             class="fa-regular fa-trash-can"></i></button>
                 </div>
                 <div class="cart-items-container" id="cartContainer">
-                    <div class="empty-cart-msg"><i class="fa-solid fa-cart-shopping"></i><span>No items added yet</span>
+                    <div class="empty-cart-msg bolder-empty-cart">
+                        <svg viewBox="0 0 80 80" class="cart-empty-icon">
+                            <rect x="20" y="30" width="40" height="32" rx="4" fill="#E5F3FF" stroke="#0082E6" stroke-width="2" opacity="0.3"/>
+                            <path d="M24 30 L28 18 L52 18 L56 30" fill="none" stroke="#0082E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+                            <circle cx="35" cy="52" r="4" fill="#0082E6" opacity="0.4"/>
+                            <circle cx="45" cy="52" r="4" fill="#0082E6" opacity="0.4"/>
+                            <path d="M32 24 L36 12 L44 12 L48 24" fill="none" stroke="#0082E6" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                        </svg>
+                        <span class="empty-title">Your cart is empty</span>
+                        <span class="empty-hint">Tap products to add items</span>
                     </div>
                 </div>
                 <div class="cart-summary">
                     <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₱0.00</span></div>
-                    <div class="summary-row"><span>Tax (12% VAT)</span><span id="cartTax">₱0.00</span></div>
                     <div class="summary-row total"><span>Total</span><span id="cartTotal"
                             style="color:var(--primary-blue);">₱0.00</span></div>
 
@@ -1176,8 +1554,7 @@
         <div class="settings-card">
             <h3 class="settings-section-title"><i class="fa-solid fa-store"></i> Store Information</h3>
             <div class="settings-form-grid">
-                <div class="form-group"><label>Store Name</label><input type="text" value="PayTeodil Store"></div>
-                <div class="form-group"><label>Tax Rate (%)</label><input type="number" value="12"></div>
+                <div class="form-group" style="grid-column:span 2;"><label>Store Name</label><input type="text" value="PayTeodil Store"></div>
                 <div class="form-group" style="grid-column:span 2;"><label>Store Address</label><input type="text"
                         value="Garchitorena, Camarines Sur"></div>
             </div>
@@ -1352,7 +1729,6 @@
             </table>
             <div class="receipt-totals">
                 <div><span>Subtotal:</span><span id="receipt-subtotal"></span></div>
-                <div><span>Tax (12%):</span><span id="receipt-tax"></span></div>
                 <div
                     style="font-weight:bold;font-size:1.1rem;margin-top:0.5rem;border-top:1px dashed #ccc;padding-top:0.5rem;">
                     <span>TOTAL:</span><span id="receipt-total"></span></div>

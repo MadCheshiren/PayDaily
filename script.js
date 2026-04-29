@@ -13,11 +13,18 @@ function showView(viewName) {
         const el = document.getElementById(v + '-view');
         if (el) el.style.display = 'none';
     });
-    document.body.classList.toggle('home-active', viewName === 'home');
     const target = document.getElementById(viewName + '-view');
-    if (!target) return;
-    const flexViews = ['home','login','admin','pos','settings'];
-    target.style.display = flexViews.includes(viewName) ? 'flex' : 'block';
+    if (target) {
+        target.style.display = (viewName === 'admin' || viewName === 'pos') ? 'flex' : 'block';
+        if(viewName==='home') document.body.classList.add('home-active');
+        else document.body.classList.remove('home-active');
+        // Refresh POS products when switching to POS (to show updated clearance prices)
+        if (viewName === 'pos') {
+            renderProducts();
+            updateCartUI();
+            updatePOSClearanceAlert();
+        }
+    }
 }
 
 function scrollToSection(id) {
@@ -60,7 +67,6 @@ loginForm.addEventListener('submit', function(e) {
             if (successMsg) successMsg.style.display = 'none';
             if (role === 'manager') {
                 document.getElementById('admin-user-name').innerText = 'Store Manager';
-                document.getElementById('admin-user-role').innerText = 'Manager';
                 sessionStorage.setItem('posRole', 'manager');
                 showView('admin');
                 switchAdminTab('dashboard');
@@ -94,9 +100,9 @@ function switchAdminTab(tabName) {
     });
     const target = document.getElementById(tabName + '-content');
     if (target) target.style.display = 'block';
-    document.querySelectorAll('.sidebar .nav-link').forEach(l => l.classList.remove('active'));
-    const navEl = document.getElementById('nav-' + tabName);
-    if (navEl) navEl.classList.add('active');
+    document.querySelectorAll('.admin-tab').forEach(l => l.classList.remove('active'));
+    const tabEl = document.getElementById('tab-' + tabName);
+    if (tabEl) tabEl.classList.add('active');
     if (tabName === 'dashboard')    { refreshDashboard(); initSalesChart('week'); }
     if (tabName === 'transactions') { renderTransactionsTable(); }
     if (tabName === 'reports')      { initReportsChart('month'); initCategoryChart(); }
@@ -646,11 +652,9 @@ function showReceiptFromHistory(txnId) {
         tbody.appendChild(tr);
     });
 
-    const isMock = !t.cart;
-    const total = isMock ? t.amount : (calcSub + (calcSub * 0.12));
-    
+    const total = t.amount || calcSub;
+
     document.getElementById('receipt-subtotal').innerText = t.sub !== undefined ? `₱${t.sub.toFixed(2)}` : `₱${calcSub.toFixed(2)}`;
-    document.getElementById('receipt-tax').innerText = t.tax !== undefined ? `₱${t.tax.toFixed(2)}` : `₱${(isMock ? (total/1.12)*0.12 : calcSub*0.12).toFixed(2)}`;
     document.getElementById('receipt-total').innerText = `₱${total.toFixed(2)}`;
     document.getElementById('receipt-cash').innerText = t.cash !== undefined ? `₱${t.cash.toFixed(2)}` : `₱${total.toFixed(2)}`;
     document.getElementById('receipt-change').innerText = t.change !== undefined ? `₱${t.change.toFixed(2)}` : `₱0.00`;
@@ -750,24 +754,45 @@ function renderProducts() {
         filtered = filtered.filter(p => p.cat === currentCategory);
     }
     if (searchQuery) filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery) || p.cat.toLowerCase().includes(searchQuery));
-    if (!filtered.length) { grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-muted);"><i class="fa-solid fa-box-open" style="font-size:2rem;display:block;margin-bottom:1rem;opacity:0.5;"></i>No products found.</div>`; return; }
+    if (!filtered.length) { grid.innerHTML=`<div class="pos-empty-state"><svg viewBox="0 0 64 64" class="empty-icon"><rect x="12" y="20" width="40" height="32" rx="4" fill="#E5F3FF" stroke="#0082E6" stroke-width="2" opacity="0.3"/><path d="M20 28 L44 28 M20 36 L36 36" stroke="#0082E6" stroke-width="2" stroke-linecap="round" opacity="0.4"/><circle cx="48" cy="16" r="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/><text x="48" y="20" text-anchor="middle" font-size="12" fill="#F59E0B">?</text></svg><p>No products found</p></div>`; return; }
+    // Sort: clearance items first, then by name
+    filtered.sort((a, b) => {
+        if (a.clearance && !b.clearance) return -1;
+        if (!a.clearance && b.clearance) return 1;
+        return a.name.localeCompare(b.name);
+    });
+
     filtered.forEach(p => {
         const card = document.createElement('div');
-        card.className = 'pos-product-card';
+        card.className = `pos-product-card bolder-pos-card ${p.clearance ? 'clearance-card' : ''}`;
+        const iconSvg = getProductIconSvg(p.cat, p.name);
         card.innerHTML = `
-            <div class="pos-product-image">
-                ${p.image ? '<img src="' + p.image + '" alt="' + p.name + '" style="max-width:100%; max-height:100%; border-radius:8px; object-fit:contain;">' : '<i class="fa-solid ' + p.icon + '"></i>'}
+            ${p.clearance ? '<div class="clearance-badge">SALE</div>' : ''}
+            <div class="pos-product-image bolder-product-image ${p.clearance ? 'clearance-image' : ''}">
+                ${p.image ? '<img src="' + p.image + '" alt="' + p.name + '" style="max-width:100%; max-height:100%; border-radius:8px; object-fit:contain;">' : iconSvg}
             </div>
             <div class="pos-product-name">${p.name}</div>
             <div class="pos-product-cat">${p.cat}</div>
             <div class="pos-product-footer">
-                <div class="pos-product-price">
-                    ${p.clearance ? `<span style="text-decoration:line-through; font-size:0.8rem; color:var(--text-muted);">₱${p.originalPrice.toFixed(2)}</span> <span style="color:#E11D48; font-weight:700;">₱${p.price.toFixed(2)}</span>` : `₱${p.price.toFixed(2)}`}
+                <div class="pos-product-price bolder-product-price">
+                    ${p.clearance ? `<span class="clearance-original">₱${p.originalPrice.toFixed(2)}</span> <span class="clearance-price">₱${p.price.toFixed(2)}</span>` : `<span class="regular-price">₱${p.price.toFixed(2)}</span>`}
                 </div>
-                <button class="pos-add-btn" onclick="addToCart(${p.id})"><i class="fa-solid fa-plus"></i></button>
+                <button class="pos-add-btn bolder-add-btn ${p.clearance ? 'clearance-add-btn' : ''}" onclick="addToCart(${p.id})"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             </div>`;
         grid.appendChild(card);
     });
+}
+
+function getProductIconSvg(category, name) {
+    const icons = {
+        'School Supplies': `<svg viewBox="0 0 64 64" class="product-icon-svg"><rect x="16" y="8" width="32" height="48" rx="3" fill="#DBEAFE" stroke="#0082E6" stroke-width="2"/><line x1="24" y1="18" x2="40" y2="18" stroke="#0082E6" stroke-width="2"/><line x1="24" y1="26" x2="36" y2="26" stroke="#0082E6" stroke-width="2" opacity="0.6"/><line x1="24" y1="34" x2="38" y2="34" stroke="#0082E6" stroke-width="2" opacity="0.4"/><circle cx="44" cy="44" r="8" fill="#0082E6"/><text x="44" y="48" text-anchor="middle" font-size="10" fill="white">✓</text></svg>`,
+        'Bags': `<svg viewBox="0 0 64 64" class="product-icon-svg"><rect x="12" y="20" width="40" height="32" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/><path d="M20 20 V14 Q20 8 32 8 Q44 8 44 14 V20" fill="none" stroke="#F59E0B" stroke-width="2"/><rect x="24" y="28" width="16" height="4" rx="1" fill="#F59E0B" opacity="0.4"/><rect x="24" y="36" width="12" height="2" rx="1" fill="#F59E0B" opacity="0.6"/></svg>`,
+        'Perfumes & Colognes': `<svg viewBox="0 0 64 64" class="product-icon-svg"><rect x="24" y="12" width="16" height="28" rx="3" fill="#F3E8FF" stroke="#9333EA" stroke-width="2"/><rect x="20" y="40" width="24" height="12" rx="2" fill="#F3E8FF" stroke="#9333EA" stroke-width="2"/><circle cx="32" cy="22" r="4" fill="#9333EA" opacity="0.3"/><path d="M40 16 L46 10 M42 24 L48 18" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/></svg>`,
+        'Hardware': `<svg viewBox="0 0 64 64" class="product-icon-svg"><rect x="14" y="14" width="36" height="36" rx="4" fill="#E5F3FF" stroke="#0082E6" stroke-width="2"/><circle cx="32" cy="32" r="10" fill="none" stroke="#0082E6" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="#0082E6"/><rect x="30" y="8" width="4" height="8" rx="1" fill="#0082E6"/><rect x="30" y="48" width="4" height="8" rx="1" fill="#0082E6"/><rect x="8" y="30" width="8" height="4" rx="1" fill="#0082E6"/><rect x="48" y="30" width="8" height="4" rx="1" fill="#0082E6"/></svg>`,
+        'Clearance': `<svg viewBox="0 0 64 64" class="product-icon-svg"><circle cx="32" cy="32" r="24" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/><text x="32" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#E11D48">%</text><path d="M20 40 L44 24" stroke="#E11D48" stroke-width="3" stroke-linecap="round"/></svg>`,
+        'default': `<svg viewBox="0 0 64 64" class="product-icon-svg"><rect x="16" y="12" width="32" height="40" rx="4" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/><circle cx="32" cy="28" r="8" fill="#64748B" opacity="0.3"/><path d="M24 44 L40 44" stroke="#64748B" stroke-width="2" stroke-linecap="round"/></svg>`
+    };
+    return icons[category] || icons['default'];
 }
 
 function getProductStock(name) {
@@ -817,29 +842,30 @@ function updateCartUI() {
     const c=document.getElementById('cartContainer');
     if(!c) return;
     if(!cart.length){
-        c.innerHTML=`<div class="empty-cart-msg"><i class="fa-solid fa-cart-shopping"></i><span>No items added yet</span></div>`;
-        ['cartSubtotal','cartTax','cartTotal'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerText='₱0.00';});
+        c.innerHTML=`<div class="empty-cart-msg bolder-empty-cart"><svg viewBox="0 0 80 80" class="cart-empty-icon"><rect x="20" y="30" width="40" height="32" rx="4" fill="#E5F3FF" stroke="#0082E6" stroke-width="2" opacity="0.3"/><path d="M24 30 L28 18 L52 18 L56 30" fill="none" stroke="#0082E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><circle cx="35" cy="52" r="4" fill="#0082E6" opacity="0.4"/><circle cx="45" cy="52" r="4" fill="#0082E6" opacity="0.4"/><path d="M32 24 L36 12 L44 12 L48 24" fill="none" stroke="#0082E6" stroke-width="2" stroke-linecap="round" opacity="0.3"/></svg><span class="empty-title">Your cart is empty</span><span class="empty-hint">Tap products to add items</span></div>`;
+        ['cartSubtotal','cartTotal'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerText='₱0.00';});
         return;
     }
     c.innerHTML=''; let sub=0;
     cart.forEach(item=>{
         const tot=item.price*item.qty; sub+=tot;
-        const div=document.createElement('div'); div.className='cart-item';
+        const p = products.find(x => x.id === item.id);
+        const iconSvg = p ? getProductIconSvg(p.cat, p.name) : getProductIconSvg('default');
+        const div=document.createElement('div'); div.className='cart-item bolder-cart-item';
         div.innerHTML=`
-            <div class="cart-item-icon">
-                ${item.image ? '<img src="' + item.image + '" alt="' + item.name + '" style="max-width:100%; max-height:100%; border-radius:8px; object-fit:contain;">' : '<i class="fa-solid ' + item.icon + '"></i>'}
+            <div class="cart-item-icon bolder-cart-icon">
+                ${item.image ? '<img src="' + item.image + '" alt="' + item.name + '" style="max-width:100%; max-height:100%; border-radius:8px; object-fit:contain;">' : iconSvg}
             </div>
             <div class="cart-item-details"><div class="cart-item-name">${item.name}</div><div class="cart-item-sub">₱${item.price.toFixed(2)} × ${item.qty}</div></div>
             <div class="cart-item-price-col"><div class="cart-item-total">₱${tot.toFixed(2)}</div></div>
-            <div class="cart-qty-controls">
-                <i class="fa-solid fa-chevron-up" onclick="changeQty(${item.id},1)"></i>
-                <i class="fa-solid fa-chevron-down" onclick="changeQty(${item.id},-1)"></i>
+            <div class="cart-qty-controls bolder-qty-controls">
+                <button class="qty-btn" onclick="changeQty(${item.id},1)"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="qty-btn" onclick="changeQty(${item.id},-1)"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             </div>`;
         c.appendChild(div);
     });
-    const tax=sub*0.12, total=sub+tax;
+    const total=sub;
     document.getElementById('cartSubtotal').innerText=`₱${sub.toFixed(2)}`;
-    document.getElementById('cartTax').innerText=`₱${tax.toFixed(2)}`;
     document.getElementById('cartTotal').innerText=`₱${total.toFixed(2)}`;
 }
 
@@ -880,8 +906,7 @@ async function completeSale() {
     if(!cart.length) return alert('Cart is empty.');
 
     const sub   = cart.reduce((s,i)=>s+i.price*i.qty,0);
-    const tax   = sub*0.12;
-    const total = sub+tax;
+    const total = sub;
 
     // Validate cash input
     const cashEl  = document.getElementById('cashInput');
@@ -918,12 +943,11 @@ async function completeSale() {
             date: 'Today, '+now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}), 
             items: items, 
             amount: total, 
-            ts: now.getTime(), 
+            ts: now.getTime(),
             status: 'Completed',
-            sub: sub, 
-            tax: tax, 
-            cash: cash, 
-            change: change 
+            sub: sub,
+            cash: cash,
+            change: change
         };
 
         // 1. Keep saving locally for UI responsiveness to work instantly
@@ -945,7 +969,6 @@ async function completeSale() {
         });
 
         document.getElementById('receipt-subtotal').innerText = `₱${sub.toFixed(2)}`;
-        document.getElementById('receipt-tax').innerText      = `₱${tax.toFixed(2)}`;
         document.getElementById('receipt-total').innerText    = `₱${total.toFixed(2)}`;
         document.getElementById('receipt-cash').innerText     = `₱${cash.toFixed(2)}`;
         document.getElementById('receipt-change').innerText   = `₱${change.toFixed(2)}`;
@@ -1119,90 +1142,162 @@ function getProductSales(name, days) {
 
 function forceClearanceScan() {
     showToast('Scanning inventory for slow moving items...', 'success');
-    
+
     const tbody = document.getElementById('clearanceBody');
     if (!tbody) return;
     tbody.innerHTML = '';
-    
+
     let slowCount = 0;
-    
+    window._clearanceItems = []; // Store items for selection
+
     products.forEach(p => {
-        // Mock inventory age for demonstration: random age between 5 and 100 days
         const mockAgeDays = p._mockAge || Math.floor(Math.random() * 95) + 5;
         p._mockAge = mockAgeDays;
-        
         const recentSales = getProductSales(p.name, 14);
-        
-        // Trigger condition: 0-2 sales in 14 days OR 30+ days in inventory
+
         let trigger = '';
-        let suggestedDiscount = 0;
-        
         if (recentSales <= 2) trigger = `Low Sales (${recentSales} in 14d)`;
         if (mockAgeDays >= 30) {
             trigger = trigger ? trigger + ` & Age (${mockAgeDays}d)` : `Age (${mockAgeDays}d)`;
         }
-        
+
         if (trigger) {
             slowCount++;
-            
-            // Auto Tiering Logic
-            if (mockAgeDays >= 90) suggestedDiscount = 50;
-            else if (mockAgeDays >= 60) suggestedDiscount = 20;
-            else if (mockAgeDays >= 30) suggestedDiscount = 10;
-            else suggestedDiscount = 10; // Default for low sales recent items
-            
+            window._clearanceItems.push(p.id);
+
             if (!p.originalPrice) p.originalPrice = p.price;
-            
-            // If it's already on clearance, keep its current discount
-            const currentDisc = p.clearance ? Math.round((1 - (p.price / p.originalPrice)) * 100) : NaN;
-            const finalDiscount = isNaN(currentDisc) ? suggestedDiscount : currentDisc;
-            
-            let statusHtml = p.clearance ? 
-                `<span class="status-pill status-instock" style="background:#FFF1F2; color:#E11D48;"><i class="fa-solid fa-bullhorn"></i> Active</span>` : 
-                `<span class="status-pill status-pending text-muted">Pending</span>`;
-                
+            const currentDisc = p.clearance ? Math.round((1 - (p.price / p.originalPrice)) * 100) : 0;
+
+            let statusHtml = p.clearance ?
+                `<span class="status-pill status-instock" style="background:#D1FAE5; color:#047857;"><i class="fa-solid fa-check"></i> Active</span>` :
+                `<span class="status-pill status-pending" style="background:#F1F5F9; color:#64748B;">Not Set</span>`;
+
+            const finalPrice = p.clearance ? p.price : p.originalPrice;
+
             const tr = document.createElement('tr');
+            tr.dataset.productId = p.id;
             tr.innerHTML = `
-                <td><div style="font-weight:500;">${p.name}</div></td>
+                <td><input type="checkbox" class="clearance-checkbox" value="${p.id}" onchange="updateSelectedCount()"></td>
+                <td><div style="font-weight:600;">${p.name}</div><div style="font-size:0.8rem; color:var(--text-muted);">SKU: ${p.sku || 'N/A'}</div></td>
                 <td style="color:var(--text-muted);">${p.cat}</td>
-                <td><span style="font-size:0.85rem; background:var(--muted-bg); padding:0.2rem 0.5rem; border-radius:4px;">${trigger}</span></td>
+                <td><span style="font-size:0.8rem; background:var(--muted-bg); padding:0.25rem 0.5rem; border-radius:4px;">${trigger}</span></td>
                 <td>₱${p.originalPrice.toFixed(2)}</td>
                 <td>
-                    <select class="discount-select" onchange="updateClearanceDiscount(${p.id}, this.value)" style="padding:0.25rem; border-radius:4px; border:1px solid var(--border-color);">
-                        <option value="0" ${finalDiscount === 0 ? 'selected' : ''}>No Discount</option>
-                        <option value="10" ${finalDiscount === 10 ? 'selected' : ''}>10% Off</option>
-                        <option value="20" ${finalDiscount === 20 ? 'selected' : ''}>20% Off</option>
-                        <option value="30" ${finalDiscount === 30 ? 'selected' : ''}>30% Off</option>
-                        <option value="50" ${finalDiscount === 50 ? 'selected' : ''}>50% Off</option>
+                    <select class="discount-select" data-product-id="${p.id}" onchange="updateClearanceDiscount(${p.id}, this.value)" style="padding:0.35rem; border-radius:4px; border:1px solid var(--border-color); font-size:0.85rem;">
+                        <option value="0" ${currentDisc === 0 ? 'selected' : ''}>No Discount</option>
+                        <option value="10" ${currentDisc === 10 ? 'selected' : ''}>10% Off</option>
+                        <option value="20" ${currentDisc === 20 ? 'selected' : ''}>20% Off</option>
+                        <option value="30" ${currentDisc === 30 ? 'selected' : ''}>30% Off</option>
+                        <option value="50" ${currentDisc === 50 ? 'selected' : ''}>50% Off</option>
                     </select>
                 </td>
-                <td style="font-weight:600; color:#E11D48;">₱${(p.originalPrice * (1 - finalDiscount/100)).toFixed(2)}</td>
-                <td id="clearance-status-${p.id}">
-                    ${statusHtml}
-                </td>
+                <td style="font-weight:700; color:${p.clearance ? '#E11D48' : 'var(--text-main)'};">₱${finalPrice.toFixed(2)}</td>
+                <td id="clearance-status-${p.id}">${statusHtml}</td>
             `;
             tbody.appendChild(tr);
-            
-            // Apply suggested if not yet active, but wait for manager to apply?
-            // "System will allow manager to choose". We just show the drop-down.
         }
     });
-    
+
     document.getElementById('clearanceSlowCount').textContent = slowCount;
     if (slowCount === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:var(--text-muted);">No slow-moving items detected.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:3rem; color:var(--text-muted);"><i class="fa-solid fa-check-circle" style="font-size:2rem; margin-bottom:1rem; display:block;"></i>No slow-moving items detected. All inventory is moving well!</td></tr>`;
     }
-    
+
+    updateSelectedCount();
     checkWeeklyVolume();
+    updateClearanceCounts();
+}
+
+function updateSelectedCount() {
+    const checked = document.querySelectorAll('.clearance-checkbox:checked');
+    const count = checked.length;
+    document.getElementById('selectedCount').textContent = count + ' selected';
+    document.getElementById('selectAllClearance').checked = count > 0 && count === document.querySelectorAll('.clearance-checkbox').length;
+    document.getElementById('headerSelectAll').checked = document.getElementById('selectAllClearance').checked;
+}
+
+function toggleSelectAllClearance(checked) {
+    document.querySelectorAll('.clearance-checkbox').forEach(cb => cb.checked = checked);
+    document.getElementById('selectAllClearance').checked = checked;
+    document.getElementById('headerSelectAll').checked = checked;
+    updateSelectedCount();
+}
+
+function applyBulkDiscount() {
+    const discount = document.getElementById('bulkDiscount').value;
+    if (!discount) {
+        showToast('Please select a discount percentage', 'error');
+        return;
+    }
+
+    const checked = document.querySelectorAll('.clearance-checkbox:checked');
+    if (checked.length === 0) {
+        showToast('Please select items to apply discount', 'error');
+        return;
+    }
+
+    checked.forEach(cb => {
+        const productId = parseInt(cb.value);
+        const select = document.querySelector(`select[data-product-id="${productId}"]`);
+        if (select) {
+            select.value = discount;
+            updateClearanceDiscount(productId, discount);
+        }
+    });
+
+    showToast(`Applied ${discount}% discount to ${checked.length} items`, 'success');
+    updateSelectedCount();
+}
+
+function removeSelectedFromClearance() {
+    const checked = document.querySelectorAll('.clearance-checkbox:checked');
+    if (checked.length === 0) {
+        showToast('Please select items to remove', 'error');
+        return;
+    }
+
+    checked.forEach(cb => {
+        const productId = parseInt(cb.value);
+        const select = document.querySelector(`select[data-product-id="${productId}"]`);
+        if (select) {
+            select.value = '0';
+            updateClearanceDiscount(productId, '0');
+        }
+    });
+
+    showToast(`Removed ${checked.length} items from clearance`, 'success');
+    updateSelectedCount();
+}
+
+function updateClearanceCounts() {
+    const activeCount = products.filter(p => p.clearance).length;
+    document.getElementById('clearanceActiveCount').textContent = activeCount;
+    updatePOSClearanceAlert();
+}
+
+function updatePOSClearanceAlert() {
+    const alert = document.getElementById('pos-clearance-alert');
+    const clearancePill = document.querySelector('.clearance-pill');
+    const activeCount = products.filter(p => p.clearance).length;
+
+    // Show/hide the clearance pill in category bar
+    if (clearancePill) {
+        clearancePill.style.display = activeCount > 0 ? 'inline-flex' : 'none';
+    }
+
+    // Show/hide the alert banner in POS
+    if (alert) {
+        alert.style.display = activeCount > 0 ? 'flex' : 'none';
+    }
 }
 
 function updateClearanceDiscount(productId, discountPct) {
     const p = products.find(x => x.id === productId);
     if (!p) return;
-    
+
     if (!p.originalPrice) p.originalPrice = p.price;
     const discount = parseInt(discountPct);
-    
+
     if (discount > 0) {
         p.price = p.originalPrice * (1 - discount / 100);
         p.clearance = true;
@@ -1210,12 +1305,26 @@ function updateClearanceDiscount(productId, discountPct) {
         p.price = p.originalPrice;
         p.clearance = false;
     }
-    
-    // Update local UI
-    forceClearanceScan();
+
+    // Update just this row's UI instead of full re-render
+    const statusCell = document.getElementById(`clearance-status-${p.id}`);
+    const row = document.querySelector(`tr[data-product-id="${p.id}"]`);
+    if (row && statusCell) {
+        const priceCell = row.querySelector('td:nth-child(7)');
+        if (priceCell) {
+            priceCell.textContent = `₱${p.price.toFixed(2)}`;
+            priceCell.style.color = p.clearance ? '#E11D48' : 'var(--text-main)';
+        }
+
+        statusCell.innerHTML = p.clearance ?
+            `<span class="status-pill status-instock" style="background:#D1FAE5; color:#047857;"><i class="fa-solid fa-check"></i> Active</span>` :
+            `<span class="status-pill status-pending" style="background:#F1F5F9; color:#64748B;">Not Set</span>`;
+    }
+
+    updateClearanceCounts();
     updateClearanceUI();
-    showToast(`Updated clearance discount for ${p.name}.`);
-    
+    showToast(`Updated ${p.name}: ${discount > 0 ? discount + '% off' : 'removed from clearance'}`);
+
     // Refresh POS Grid if active
     if (document.getElementById('pos-view').style.display === 'flex' || document.getElementById('pos-view').style.display === 'block') {
         renderProducts();
@@ -1269,7 +1378,6 @@ searchIndex.push({ label:'Clearance Sale', action:() => switchAdminTab('clearanc
     const savedRole = sessionStorage.getItem('posRole');
     if (savedRole === 'manager') {
         document.getElementById('admin-user-name').innerText = 'Store Manager';
-        document.getElementById('admin-user-role').innerText = 'Manager';
         showView('admin');
         switchAdminTab('dashboard');
     } else if (savedRole === 'staff') {

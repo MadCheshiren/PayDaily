@@ -10,16 +10,22 @@ app.use(express.json());
 
 const path = require('path');
 
-// Serve all frontend files (HTML, CSS, JS, images) from the current folder
-app.use(express.static(path.join(__dirname)));
+const rootDir = path.join(__dirname, '..');
+const publicDir = path.join(rootDir, 'public');
+
+// Serve frontend files from public/
+app.use(express.static(publicDir));
+// Serve node_modules under /vendor so index.html can reference them
+app.use('/vendor', express.static(path.join(rootDir, 'node_modules')));
 
 // Explicitly send index.html when visitors hit the root domain
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(publicDir, 'index.html'));
 });
 
 // Initialize SQLite database
-const db = new sqlite3.Database('./pos_database.sqlite', (err) => {
+const dbPath = path.join(__dirname, 'data', 'pos_database.sqlite');
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Error opening database:', err.message);
     } else {

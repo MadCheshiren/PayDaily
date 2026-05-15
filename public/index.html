@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PayDaily - Mock Design</title>
-    <link rel="icon" type="image/png" href="PayDailyLogo.png">
-    <link href="node_modules/@fontsource/plus-jakarta-sans/index.css" rel="stylesheet">
-    <link href="node_modules/@fontsource/plus-jakarta-sans/500.css" rel="stylesheet">
-    <link href="node_modules/@fontsource/plus-jakarta-sans/600.css" rel="stylesheet">
-    <link href="node_modules/@fontsource/plus-jakarta-sans/700.css" rel="stylesheet">
-    <link href="node_modules/@fontsource/plus-jakarta-sans/800.css" rel="stylesheet">
-    <link href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/PayDailyLogo.png">
+    <link href="/vendor/@fontsource/plus-jakarta-sans/index.css" rel="stylesheet">
+    <link href="/vendor/@fontsource/plus-jakarta-sans/500.css" rel="stylesheet">
+    <link href="/vendor/@fontsource/plus-jakarta-sans/600.css" rel="stylesheet">
+    <link href="/vendor/@fontsource/plus-jakarta-sans/700.css" rel="stylesheet">
+    <link href="/vendor/@fontsource/plus-jakarta-sans/800.css" rel="stylesheet">
+    <link href="/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <script src="/vendor/chart.js/dist/chart.umd.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     <div id="home-view" style="display:flex;">
         <nav class="home-nav">
             <div class="home-brand">
-                <img src="PayDailyLogo.png" alt="Logo" onerror="this.style.display='none'">
+                <img src="images/PayDailyLogo.png" alt="Logo" onerror="this.style.display='none'">
                 <span>PayDaily</span>
             </div>
             <div class="home-nav-links">
@@ -147,7 +147,7 @@
 
         <section class="about-section" id="about-section">
             <div class="about-logo-block">
-                <img src="PayDailyLogo.png" alt="PayDaily Logo" class="about-logo"
+                <img src="images/PayDailyLogo.png" alt="PayDaily Logo" class="about-logo"
                     onerror="this.style.display='none'">
                 <div class="about-logo-text">
                     <h2>PayDaily</h2>
@@ -180,7 +180,7 @@
     <div id="login-view" style="display:none;">
         <header class="login-header">
             <div class="login-brand">
-                <img src="PayDailyLogo.png" alt="Logo" style="height:36px;border-radius:8px;"
+                <img src="images/PayDailyLogo.png" alt="Logo" style="height:36px;border-radius:8px;"
                     onerror="this.style.display='none'">
                 PayDaily
             </div>
@@ -257,7 +257,7 @@
         <!-- Top Navigation Bar -->
         <header class="admin-topnav">
             <div class="admin-brand">
-                <img src="PayTeodilStore.png" alt="Logo" class="admin-logo" onerror="this.style.display='none'">
+                <img src="images/PayTeodilStore.png" alt="Logo" class="admin-logo" onerror="this.style.display='none'">
                 <span class="admin-brand-text">PayDaily Store</span>
                 <span class="admin-badge">Manager</span>
             </div>
@@ -1434,7 +1434,7 @@
     <div id="pos-view" style="display:none;">
         <header class="pos-header">
             <div class="login-brand" style="font-size:1.1rem;">
-                <img src="PayTeodilStore.png" alt="Logo" style="height:28px;border-radius:6px;margin-right:0.5rem;"
+                <img src="images/PayTeodilStore.png" alt="Logo" style="height:28px;border-radius:6px;margin-right:0.5rem;"
                     onerror="this.style.display='none'">
                 PAY DAILY STORE — POS
             </div>
@@ -1596,20 +1596,16 @@
 
     <!-- ===================== VIEW 5: SITE MAP ===================== -->
     <div id="sitemap-view" style="display:none;">
-        <div class="settings-header">
-            <button class="btn-outline" style="flex:none;width:auto;" onclick="showView('admin')"><i
-                    class="fa-solid fa-arrow-left"></i> Back to Dashboard</button>
-            <h1 style="font-size:1.5rem;"><i class="fa-solid fa-sitemap"></i> Navigation Flow / Site Map</h1>
-            <div style="width:120px;"></div>
+        <div class="sitemap-bar">
+            <button class="btn-outline" onclick="showView('admin')"><i class="fa-solid fa-arrow-left"></i> Dashboard</button>
+            <h1><i class="fa-solid fa-sitemap"></i> Site Map</h1>
         </div>
         <div class="sitemap-container">
             <div class="sitemap-desc">
-                This diagram shows how all screens in PayDaily are connected. The system starts at the Home Page,
-                moves to Login, then branches based on user role — Manager sees the full dashboard, Staff only sees the
-                POS screen.
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>How PayDaily screens connect. Flow starts at the Home page, passes through Login, then forks based on user role: Manager path opens the full admin dashboard, Staff path opens the POS screen directly.</span>
             </div>
             <div class="sitemap-wrapper">
-                <!-- Row 1: Home -->
                 <div class="sitemap-row">
                     <div class="sitemap-node home-node">
                         <i class="fa-solid fa-house"></i>
@@ -1617,8 +1613,9 @@
                         <span>Landing / About</span>
                     </div>
                 </div>
-                <div class="sitemap-arrow-down">↓</div>
-                <!-- Row 2: Login -->
+                <div class="sitemap-arrow pulse">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                </div>
                 <div class="sitemap-row">
                     <div class="sitemap-node login-node">
                         <i class="fa-solid fa-shield-halved"></i>
@@ -1626,8 +1623,10 @@
                         <span>Role Selection + Auth</span>
                     </div>
                 </div>
-                <div class="sitemap-arrow-down">↓ Role determines path ↓</div>
-                <!-- Row 3: Branch -->
+                <div class="sitemap-arrow pulse">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                    <span>Role determines path</span>
+                </div>
                 <div class="sitemap-branch-row">
                     <div class="sitemap-branch-col">
                         <div class="sitemap-branch-label manager-label"><i class="fa-solid fa-store"></i> Manager Path
@@ -1690,11 +1689,11 @@
                 </div>
             </div>
             <div class="sitemap-legend">
-                <div class="legend-item"><span class="legend-dot input-dot"></span> INPUT — User enters data</div>
-                <div class="legend-item"><span class="legend-dot process-dot"></span> PROCESS — System handles logic
+                <div class="legend-item"><span class="legend-dot input-dot"></span> INPUT: User enters data</div>
+                <div class="legend-item"><span class="legend-dot process-dot"></span> PROCESS: System handles logic
                 </div>
-                <div class="legend-item"><span class="legend-dot output-dot"></span> OUTPUT — Results displayed</div>
-                <div class="legend-item"><span class="legend-dot add-dot"></span> ADDITIONAL — Supporting features</div>
+                <div class="legend-item"><span class="legend-dot output-dot"></span> OUTPUT: Results displayed</div>
+                <div class="legend-item"><span class="legend-dot add-dot"></span> ADDITIONAL: Supporting features</div>
             </div>
         </div>
     </div>
@@ -1859,7 +1858,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

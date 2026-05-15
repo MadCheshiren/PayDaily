@@ -59,3 +59,4 @@ temp/
 
 # Documentation / Design files (not part of main codebase)
 *.md
+.aider*
